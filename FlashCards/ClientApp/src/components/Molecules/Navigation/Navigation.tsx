@@ -7,8 +7,8 @@ const Navigation = () => {
     <NavigationWrapper>
       <Logo />
       <ButtonsWrapper>
-        <NavigationButton>Zaloguj</NavigationButton>
-        <NavigationButton>Rejestracja</NavigationButton>
+        <NavigationButton to="Login">Zaloguj</NavigationButton>
+        <NavigationButton to="Register">Rejestracja</NavigationButton>
       </ButtonsWrapper>
     </NavigationWrapper>
   );
