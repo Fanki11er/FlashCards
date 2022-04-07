@@ -5,7 +5,7 @@ export const theme: AppTheme = {
     transparentGray: 'rgba(0, 0, 0, 0.25)',
   },
   fontSizes: {
-    navigationButton: '30px',
+    navigationButton: '25px',
   },
 };
 

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 
 export const NavigationButton = styled.button`
-  width: 200px;
-  height: 75px;
+  width: 175px;
+  height: 60px;
   font-size: ${({ theme }) => theme.fontSizes.navigationButton};
   background-color: ${({ theme }) => theme.colors.navigationButton};
   border-radius: 10px;
