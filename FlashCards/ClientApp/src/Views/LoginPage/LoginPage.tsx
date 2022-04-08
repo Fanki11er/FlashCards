@@ -1,9 +1,10 @@
+import LoginForm from '../../components/Organisms/LoginForm/LoginForm';
 import { LoginPageWrapper } from './LoginPage.styles';
 
 const LoginPage = () => {
   return (
     <LoginPageWrapper>
-      <h1>LoginPage</h1>
+      <LoginForm />
     </LoginPageWrapper>
   );
 };
