@@ -8,10 +8,12 @@ export const theme: AppTheme = {
     buttonGreen: 'rgba(0, 252, 163, 0.66)',
     greenPlaceholder: 'rgba(0, 252, 163, 0.3)',
     orange: 'rgba(255, 152, 0, 1)',
+    errorRed: 'rgba(217,20,36, 0.9)',
   },
   fontSizes: {
     navigationButton: '25px',
     mediumHeader: '4.5rem',
+    smallError: '2rem',
   },
 };
 
@@ -25,10 +27,12 @@ export type AppTheme = {
     buttonGreen: string;
     greenPlaceholder: string;
     orange: string;
+    errorRed: string;
   };
   fontSizes: {
     navigationButton: string;
     mediumHeader: string;
+    smallError: string;
   };
 };
 

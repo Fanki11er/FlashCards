@@ -6,3 +6,10 @@ export const StyledRegistrationForm = styled(StyledForm)`
   height: 620px;
 `;
 
+export const InputWrapper = styled.div`
+  display: grid;
+  grid-template-rows: 0.7fr 0.3fr;
+  width: 100%;
+  height: 100%;
+`;
+
