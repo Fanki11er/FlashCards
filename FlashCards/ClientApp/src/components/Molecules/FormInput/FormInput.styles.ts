@@ -1,5 +1,6 @@
 import styled from 'styled-components';
-import { Field, ErrorMessage } from 'formik';
+import { Field } from 'formik';
+import { ThemeProps } from '../../../Theme/theme';
 
 export const FormInputWrapper = styled.div`
   display: grid;
@@ -17,31 +18,27 @@ export const StyledField = styled(Field)`
   grid-row: 1 / span 1;
   width: 65%;
   height: 55px;
-  border: 3px solid ${({ theme }) => theme.colors.purple};
+  border: 3px solid ${(props: ThemeProps) => props.theme.colors.purple};
   border-radius: 10px;
   justify-self: center;
-  background-color: ${({ theme }) => theme.colors.inputBlue};
+  background-color: ${(props: ThemeProps) => props.theme.colors.inputBlue};
   padding: 0 15px;
-  color: ${({ theme }) => theme.colors.buttonGreen};
-  font-size: ${({ theme }) => theme.fontSizes.navigationButton};
+  color: ${(props: ThemeProps) => props.theme.colors.buttonGreen};
+  font-size: ${(props: ThemeProps) => props.theme.fontSizes.navigationButton};
   transition: border 0.5s;
   outline: none;
   ::placeholder {
-    color: ${({ theme }) => theme.colors.greenPlaceholder};
-    font-size: ${({ theme }) => theme.fontSizes.navigationButton};
+    color: ${(props: ThemeProps) => props.theme.colors.greenPlaceholder};
+    font-size: ${(props: ThemeProps) => props.theme.fontSizes.navigationButton};
   }
   :focus {
-    border: 3px solid ${({ theme }) => theme.colors.orange};
+    border: 3px solid ${(props: ThemeProps) => props.theme.colors.orange};
   }
 `;
 
 export const Label = styled.label`
-  color: ${({ theme }) => theme.colors.purple};
+  color: ${(props: ThemeProps) => props.theme.colors.purple};
   font-size: 3rem;
   font-family: 'Roboto';
   justify-self: flex-end;
-`;
-
-export const Error = styled(ErrorMessage)`
-  color: red;
 `;

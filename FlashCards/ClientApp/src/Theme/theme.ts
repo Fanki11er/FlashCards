@@ -31,3 +31,7 @@ export type AppTheme = {
     mediumHeader: string;
   };
 };
+
+export interface ThemeProps {
+  theme: AppTheme;
+}

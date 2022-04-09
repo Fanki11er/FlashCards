@@ -22,8 +22,8 @@ const LoginForm = () => {
     >
       <StyledForm>
         <FormHeader>Logowanie</FormHeader>
-        <FormInput name="login" placeholder="Login" label="Login" errorMessage="Test" />
-        <FormInput name="password" placeholder="Hasło" label="Hasło" errorMessage="Test" type="password" />
+        <FormInput name="login" placeholder="Login" label="Login" />
+        <FormInput name="password" placeholder="Hasło" label="Hasło" type="password" />
         <DefaultButton type="submit">Zaloguj</DefaultButton>
       </StyledForm>
     </Formik>
