@@ -1,8 +1,10 @@
+import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-export const NavigationButton = styled.button`
-  width: 200px;
-  height: 75px;
+export const NavigationButton = styled(Link)`
+  display: flex;
+  width: 175px;
+  height: 60px;
   font-size: ${({ theme }) => theme.fontSizes.navigationButton};
   background-color: ${({ theme }) => theme.colors.navigationButton};
   border-radius: 10px;
@@ -12,4 +14,10 @@ export const NavigationButton = styled.button`
   font-weight: bold;
   font-family: 'Montserrat';
   margin: 0 25px;
+  text-decoration: none;
+  align-items: center;
+  justify-content: center;
+  :visited {
+    color: ${({ theme }) => theme.colors.darkPurple};
+  }
 `;

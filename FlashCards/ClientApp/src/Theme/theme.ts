@@ -3,9 +3,15 @@ export const theme: AppTheme = {
     navigationButton: 'rgba(118, 210, 176, 0.5)',
     darkPurple: 'rgba(60, 10, 105, 1)',
     transparentGray: 'rgba(0, 0, 0, 0.25)',
+    purple: 'rgba(46,38,142, 1)',
+    inputBlue: 'rgba(42, 93, 158, 1)',
+    buttonGreen: 'rgba(0, 252, 163, 0.66)',
+    greenPlaceholder: 'rgba(0, 252, 163, 0.3)',
+    orange: 'rgba(255, 152, 0, 1)',
   },
   fontSizes: {
-    navigationButton: '30px',
+    navigationButton: '25px',
+    mediumHeader: '4.5rem',
   },
 };
 
@@ -14,8 +20,18 @@ export type AppTheme = {
     navigationButton: string;
     darkPurple: string;
     transparentGray: string;
+    purple: string;
+    inputBlue: string;
+    buttonGreen: string;
+    greenPlaceholder: string;
+    orange: string;
   };
   fontSizes: {
     navigationButton: string;
+    mediumHeader: string;
   };
 };
+
+export interface ThemeProps {
+  theme: AppTheme;
+}
