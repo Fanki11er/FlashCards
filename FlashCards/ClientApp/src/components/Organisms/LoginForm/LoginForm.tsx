@@ -14,6 +14,7 @@ const LoginForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
+        console.log('Login');
         //console.log({ values, actions });
         //alert(JSON.stringify(values, null, 2));
         //actions.setSubmitting(false);
@@ -22,7 +23,7 @@ const LoginForm = () => {
       <StyledForm>
         <FormHeader>Logowanie</FormHeader>
         <FormInput name="login" placeholder="Login" label="Login" errorMessage="Test" />
-        <FormInput name="password" placeholder="Hasło" label="Hasło" errorMessage="Test" />
+        <FormInput name="password" placeholder="Hasło" label="Hasło" errorMessage="Test" type="password" />
         <DefaultButton type="submit">Zaloguj</DefaultButton>
       </StyledForm>
     </Formik>
