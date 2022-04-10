@@ -18,11 +18,6 @@ namespace FlashCards.Data
         {
 
             modelBuilder.Entity<User>()
-                .Property(u => u.Login)
-                .IsRequired();
-
-
-            modelBuilder.Entity<User>()
                 .Property(u => u.Email)
                 .IsRequired();
 

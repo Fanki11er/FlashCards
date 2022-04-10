@@ -23,7 +23,6 @@ namespace FlashCards.Services
         {
             var user = new User()
             {
-                Login = dto.Login,
                 Email = dto.Email,
             };
             var hashedPassword = _passwordHasher.HashPassword(user, dto.Password);
