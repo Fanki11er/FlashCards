@@ -7,6 +7,9 @@ namespace FlashCards.Models.Validators
     {
         public RegisterUserDtoValidator(FlashCardsDbContext dbContext)
         {
+            RuleFor(x => x.Name)
+               .MinimumLength(2);
+
             RuleFor(x => x.Email)
                 . NotEmpty()
                 .EmailAddress();
