@@ -1,6 +1,8 @@
 using FlashCards.Data;
+using FlashCards.Entities;
+using FlashCards.Services;
 using Microsoft.AspNetCore.Authentication;
-//using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity;
 //using Microsoft.AspNetCore.Identity.UI;
 using Microsoft.EntityFrameworkCore;
 
@@ -11,6 +13,8 @@ var connectionString = builder.Configuration.GetConnectionString("FlashCardsDB")
 builder.Services.AddDbContext<FlashCardsDbContext>(options =>
     options.UseSqlServer(connectionString));
 builder.Services.AddDatabaseDeveloperPageExceptionFilter();
+builder.Services.AddScoped<IAccountService, AccountService>();
+builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 
 /*builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -44,7 +48,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 //app.UseAuthentication();
-//app.UseIdentityServer();
+//app.UseIdentityServer();I
 //app.UseAuthorization();
 
 app.MapControllerRoute(

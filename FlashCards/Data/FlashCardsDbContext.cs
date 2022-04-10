@@ -6,7 +6,7 @@ namespace FlashCards.Data
     public class FlashCardsDbContext : DbContext
     {
         public DbSet<User>Users { get; set; }
-        public DbSet<UserSettings> UserSettings { get; set;}
+        
         public DbSet<FlashCard> FlashCards { get; set; }
 
         public FlashCardsDbContext(DbContextOptions options)
