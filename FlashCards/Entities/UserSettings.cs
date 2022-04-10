@@ -1,4 +1,4 @@
-﻿namespace FlashCards.Models
+﻿namespace FlashCards.Entities
 {
     public class UserSettings
     {
@@ -7,7 +7,7 @@
         public TimeSpan MaximumBreak { get; set; }
         public int PercentNew { get; set; }
 
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        //public virtual ApplicationUser ApplicationUser { get; set; }
 
     }
 }

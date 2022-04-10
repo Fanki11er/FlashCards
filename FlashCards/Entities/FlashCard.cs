@@ -1,4 +1,5 @@
-﻿namespace FlashCards.Models
+﻿
+namespace FlashCards.Entities
 {
     public class FlashCard
     {
@@ -10,8 +11,8 @@
         public bool Learned { get; set; }
         public DateTime NextSession { get; set; }
 
-        //public int ApplicationUserId { get; set; }
-        public virtual ApplicationUser ApplicationUser { get; set; }
+        public int UserId { get; set; }
+        public virtual User User { get; set; }
        
 
     }
