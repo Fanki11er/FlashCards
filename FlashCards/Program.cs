@@ -1,6 +1,7 @@
 using FlashCards;
 using FlashCards.Data;
 using FlashCards.Entities;
+using FlashCards.Middleware;
 using FlashCards.Models;
 using FlashCards.Models.Validators;
 using FlashCards.Services;
@@ -44,7 +45,7 @@ builder.Services.AddDatabaseDeveloperPageExceptionFilter();
 builder.Services.AddScoped<IAccountService, AccountService>();
 builder.Services.AddScoped<IPasswordHasher<User>, PasswordHasher<User>>();
 builder.Services.AddScoped<IValidator<RegisterUserDto>, RegisterUserDtoValidator>();
-
+builder.Services.AddScoped<ErrorHandlingMiddleware>();
 
 /*builder.Services.AddDefaultIdentity<User>(options => options.SignIn.RequireConfirmedAccount = true)
     .AddEntityFrameworkStores<ApplicationDbContext>();
@@ -74,6 +75,7 @@ else
 }
 
 app.UseAuthentication();
+app.UseMiddleware<ErrorHandlingMiddleware>();
 app.UseHttpsRedirection();
 app.UseStaticFiles();
 app.UseRouting();
