@@ -6,6 +6,7 @@ using System.Security.Claims;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using System.IdentityModel.Tokens.Jwt;
+using FlashCards.Exceptions;
 
 namespace FlashCards.Services
 {
@@ -45,16 +46,12 @@ namespace FlashCards.Services
 
             if(user is null)
             {
-                //throw new BadRequestException("Błędne imię lub hasło");
-                Console.WriteLine("BadRequestException");
-                return "";
+                throw new BadRequestException("Błędne imię lub hasło");
             }
             var result = _passwordHasher.VerifyHashedPassword(user, user.Password, dto.Password);
             if(result == PasswordVerificationResult.Failed)
             {
-                //throw new BadRequestException("Błędne imię lub hasło");
-                Console.WriteLine("BadRequestException");
-                return "";
+                throw new BadRequestException("Błędne imię lub hasło"); 
             }
 
             var claims = new List<Claim>()
