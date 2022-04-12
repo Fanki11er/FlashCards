@@ -2,8 +2,9 @@ import styled from 'styled-components';
 import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 
 export const StyledRegistrationForm = styled(StyledForm)`
-  grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 1fr;
-  height: 620px;
+  grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
+  height: 680px;
+  width: 100%;
 `;
 
 export const InputWrapper = styled.div`

@@ -9,9 +9,10 @@ const ErrorInfo = styled.div`
   text-align: center;
   justify-self: center;
   font-family: 'Roboto';
-  padding: 0 30px;
+  padding: 0 5rem;
   background-color: rgba(42, 93, 158, 0.7);
   border-radius: 5px;
+  transform: translateX(7rem);
 `;
 
 export default ErrorInfo;

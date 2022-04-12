@@ -16,6 +16,7 @@ const RegistrationSchema = Yup.object().shape({
   login: Yup.string().min(2, 'Login za krótki').required('Pole wymagane'),
   email: Yup.string().email('Nieprawidłowy email').required('Pole wymagane'),
   password: Yup.string().min(6, 'Za króthie hasło').required('Pole wymagane'),
+  repeatPassword: Yup.string().min(6, 'Za króthie hasło').required('Pole wymagane'),
 });
 
 const RegistrationForm = () => {
@@ -44,6 +45,10 @@ const RegistrationForm = () => {
         <InputWrapper>
           <FormInput name="password" placeholder="Hasło" label="Hasło*" type="password" />
           <ErrorMessage name="password" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
+        </InputWrapper>
+        <InputWrapper>
+          <FormInput name="repeatPassword" placeholder="Powtórz Hasło" label="Powtórz Hasło*" type="password" />
+          <ErrorMessage name="repeatPassword" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
         </InputWrapper>
 
         <DefaultButton type="submit">Rejestruj</DefaultButton>
