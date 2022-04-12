@@ -1,8 +1,8 @@
 import { Formik } from 'formik';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
+import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 import FormInput from '../../Molecules/FormInput/FormInput';
-import { StyledForm } from './LoginForm.styles';
 
 interface MyFormValues {
   login: string;
