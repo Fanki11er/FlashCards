@@ -16,6 +16,9 @@ namespace FlashCards.Data
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
+            modelBuilder.Entity<User>()
+               .Property(u => u.Name)
+               .IsRequired();
 
             modelBuilder.Entity<User>()
                 .Property(u => u.Email)
