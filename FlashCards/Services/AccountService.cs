@@ -42,7 +42,7 @@ namespace FlashCards.Services
 
         public string GenerateJwt(LoginDto dto)
         {
-            var user = _context.Users.FirstOrDefault(u => u.Name == dto.Name);
+            var user = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
 
             if(user is null)
             {

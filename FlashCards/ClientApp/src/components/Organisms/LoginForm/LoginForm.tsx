@@ -9,21 +9,21 @@ import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 import FormInput from '../../Molecules/FormInput/FormInput';
 
 interface MyFormValues {
-  name: string;
+  email: string;
   password: string;
 }
 const LoginForm = () => {
-  const initialValues: MyFormValues = { name: '', password: '' };
+  const initialValues: MyFormValues = { email: '', password: '' };
   const { login } = endpoints;
   //const { auth, setAuth } = useContext(AuthContext);
 
   const handleSubmit = async (values: MyFormValues) => {
     try {
-      const { name, password } = values;
+      const { email, password } = values;
       const response = await axios.post(
         login,
         JSON.stringify({
-          Name: name,
+          Email: email,
           Password: password,
         }),
         {
@@ -52,7 +52,7 @@ const LoginForm = () => {
     >
       <StyledForm>
         <FormHeader>Logowanie</FormHeader>
-        <FormInput name="name" placeholder="Name" label="name" />
+        <FormInput name="email" placeholder="Email" label="Email" type="email" />
         <FormInput name="password" placeholder="Hasło" label="Hasło" type="password" />
         <DefaultButton type="submit">Zaloguj</DefaultButton>
       </StyledForm>
