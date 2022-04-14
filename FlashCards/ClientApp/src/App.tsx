@@ -7,6 +7,7 @@ import HeroPage from './Views/HeroPage/HeroPage';
 import LoginPage from './Views/LoginPage/LoginPage';
 import RegistrationPage from './Views/RegistrationPage/RegistrationPage';
 import routes from './Routes/routes';
+import MainPage from './Views/MainPage/MainPage';
 //import { Home } from './components/Home';
 //import { FetchData } from './components/FetchData';
 //import { Counter } from './components/Counter';
@@ -15,7 +16,7 @@ import routes from './Routes/routes';
 //import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 
 const App = () => {
-  const { index, login, registration } = routes;
+  const { index, login, registration, main } = routes;
   return (
     <>
       <GlobalStyle />
@@ -25,6 +26,7 @@ const App = () => {
             <Route index element={<HeroPage />} />
             <Route path={login} element={<LoginPage />} />
             <Route path={registration} element={<RegistrationPage />} />
+            <Route path = {main} element={<MainPage />} />
           </Route>
         </Routes>
       </ThemeProvider>
