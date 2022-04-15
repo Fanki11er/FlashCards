@@ -1,8 +1,10 @@
 import { Formik } from 'formik';
-//import { useContext } from 'react';
+import { useLocation } from 'react-router';
+import { useNavigate } from 'react-router';
 import axios from '../../../Api/axios';
 import endpoints from '../../../Api/endpoints';
-//import { AuthContext } from '../../../Providers/AuthProvider';
+import useAuth from '../../../Hooks/useAuth';
+import { AuthUser } from '../../../Interfaces/Interfaces';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
@@ -12,10 +14,21 @@ interface MyFormValues {
   email: string;
   password: string;
 }
+
+type LocationProps = {
+  state: {
+    from: Location;
+  };
+};
 const LoginForm = () => {
   const initialValues: MyFormValues = { email: '', password: '' };
   const { login } = endpoints;
-  //const { auth, setAuth } = useContext(AuthContext);
+  const { setAuth } = useAuth();
+  const navigate = useNavigate();
+  const location = useLocation() as LocationProps;
+  //const from = location.state?.from?.pathname || '/';
+  // @ts-ignore
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = async (values: MyFormValues) => {
     try {
@@ -31,11 +44,9 @@ const LoginForm = () => {
           withCredentials: true,
         },
       );
-
-      //console.log(response?.data);
-      //console.log(JSON.stringify(response));
-      const accessToken = response?.data;
-      console.log('TOKEN: ' + accessToken);
+      response && setAuth(response?.data as AuthUser);
+      console.log(response);
+      navigate(from, { replace: true });
     } catch (error) {
       console.error(error);
     }
