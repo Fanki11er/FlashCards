@@ -10,6 +10,7 @@
     "@types/react-router-dom": "^5.3.3",
     "@types/styled-components": "^5.1.24",
     "@types/yup": "^0.29.13",
+    "axios": "^0.26.1",
     "bootstrap": "^5.1.0",
     "formik": "^2.2.9",
     "http-proxy-middleware": "^0.19.1",
