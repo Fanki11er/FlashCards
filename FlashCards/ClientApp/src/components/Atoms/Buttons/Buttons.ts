@@ -17,3 +17,7 @@ export const DefaultButton = styled.button`
     color: ${({ theme }) => theme.colors.orange};
   }
 `;
+
+export const MainMenuButton = styled(DefaultButton)`
+    width: 350px;
+`;
