@@ -48,6 +48,7 @@ const RegistrationForm = () => {
       });
       console.log(response.data);
       console.log(JSON.stringify(response));
+      console.log(response.data.accessToken);
     } catch (error) {
       console.error(error);
     }
