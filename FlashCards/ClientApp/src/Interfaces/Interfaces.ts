@@ -6,4 +6,6 @@ export interface UserSettings {
 export interface AuthUser {
   Name: string;
   Settings: UserSettings;
+  accessToken?: string;
 }
+

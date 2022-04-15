@@ -1,6 +1,12 @@
 import axios from 'axios';
+import endpoints from './endpoints';
+
+const { baseURL } = endpoints;
 
 export default axios.create({
-  baseURL: 'https://localhost:7290',
+  baseURL: baseURL,
 });
 
+export const axiosPrivate = axios.create({
+  baseURL: baseURL,
+});

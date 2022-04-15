@@ -2,8 +2,8 @@ const routes = {
   index: '/',
   login: '/Login',
   registration: '/Registration',
-  main: '/Main'
+  main: '/Main',
+  refreshRoute: '/Refresh',
 };
 
 export default routes;
-
