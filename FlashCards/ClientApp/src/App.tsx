@@ -7,11 +7,8 @@ import HeroPage from './Views/HeroPage/HeroPage';
 import LoginPage from './Views/LoginPage/LoginPage';
 import RegistrationPage from './Views/RegistrationPage/RegistrationPage';
 import routes from './Routes/routes';
-<<<<<<< HEAD
 import MainPage from './Views/MainPage/MainPage';
-=======
 import AuthProvider from './Providers/AuthProvider';
->>>>>>> 9a2dd91... Added Loging funcion to Login form
 //import { Home } from './components/Home';
 //import { FetchData } from './components/FetchData';
 //import { Counter } from './components/Counter';
@@ -25,26 +22,16 @@ const App = () => {
     <>
       <GlobalStyle />
       <ThemeProvider theme={theme}>
-<<<<<<< HEAD
-        <Routes>
-          <Route path={index} element={<MainTemplate />}>
-            <Route index element={<HeroPage />} />
-            <Route path={login} element={<LoginPage />} />
-            <Route path={registration} element={<RegistrationPage />} />
-            <Route path = {main} element={<MainPage />} />
-          </Route>
-        </Routes>
-=======
         <AuthProvider>
           <Routes>
             <Route path={index} element={<MainTemplate />}>
               <Route index element={<HeroPage />} />
               <Route path={login} element={<LoginPage />} />
               <Route path={registration} element={<RegistrationPage />} />
+              <Route path={main} element={<MainPage />} />
             </Route>
           </Routes>
         </AuthProvider>
->>>>>>> 9a2dd91... Added Loging funcion to Login form
       </ThemeProvider>
     </>
   );
