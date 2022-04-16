@@ -25,7 +25,6 @@ const MainPage = () => {
         const response = await axiosPrivate.get(`${statusEndpoint}:${auth?.id}`, {
           signal: controller.signal,
         });
-        console.log(response.data);
         isMounted && setFlashCardsInfo(response.data);
       } catch (error) {
         console.log(error);
@@ -44,7 +43,6 @@ const MainPage = () => {
       controller.abort();
     };
   }, [statusEndpoint, navigate, location, login, auth]);
-
   return (
     <MainPageWrapper>
       <MainMenu flashCardsInfo={flashCardsInfo} />

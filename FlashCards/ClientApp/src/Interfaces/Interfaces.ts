@@ -11,7 +11,7 @@ export interface AuthUser {
 }
 
 export interface FlashCardsStatus {
-  AllAmount: number;
-  ToLearnAmount: number;
-  NewAmount: number;
+  allAmount: number;
+  toLearnAmount: number;
+  newAmount: number;
 }
