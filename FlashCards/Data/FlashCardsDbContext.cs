@@ -30,11 +30,11 @@ namespace FlashCards.Data
 
 
             modelBuilder.Entity<FlashCard>()
-                .Property(u => u.EnglishText)
+                .Property(u => u.FrontText)
                 .IsRequired();
 
             modelBuilder.Entity<FlashCard>()
-               .Property(u => u.PolishText)
+               .Property(u => u.BackText)
                .IsRequired();
         }
     }

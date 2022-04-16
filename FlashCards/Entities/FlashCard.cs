@@ -4,12 +4,10 @@ namespace FlashCards.Entities
     public class FlashCard
     {
         public int Id { get; set; }
-        public string EnglishText { get; set; }
-        public string PolishText { get; set; }
-        public bool IsNew { get; set; }
-        public bool ToRepeat { get; set; }
-        public bool Learned { get; set; }
-        public DateTime NextSession { get; set; }
+        public string FrontText { get; set; }
+        public string BackText { get; set; }
+        public string Status { get; set; } = "NEW";
+        public DateTime NextSession { get; set; } = DateTime.Now.Date;
 
         public int UserId { get; set; }
         public virtual User User { get; set; }
