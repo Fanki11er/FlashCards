@@ -6,4 +6,12 @@ export interface UserSettings {
 export interface AuthUser {
   Name: string;
   Settings: UserSettings;
+  accessToken?: string;
 }
+
+export interface FlashCardsStatus {
+  AllAmount: number;
+  ToLearnAmount: number;
+  NewAmount: number;
+}
+
