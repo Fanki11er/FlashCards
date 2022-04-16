@@ -10,7 +10,11 @@ import routes from './Routes/routes';
 import MainPage from './Views/MainPage/MainPage';
 import AuthProvider from './Providers/AuthProvider';
 import RequireAuth from './components/Molecules/RequireAuth/RequireAuth';
+<<<<<<< HEAD
 import MaintenancePage from './Views/MaintenancePage/MaintenancePage';
+=======
+import LearningPage from './Views/LearningPage/LearningPage';
+>>>>>>> 74d7b17... Prepared Learning page startup
 //import { Home } from './components/Home';
 //import { FetchData } from './components/FetchData';
 //import { Counter } from './components/Counter';
@@ -19,7 +23,11 @@ import MaintenancePage from './Views/MaintenancePage/MaintenancePage';
 //import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 
 const App = () => {
+<<<<<<< HEAD
   const { index, login, registration, main, maintenance } = routes;
+=======
+  const { index, login, registration, main, learn } = routes;
+>>>>>>> 74d7b17... Prepared Learning page startup
   return (
     <>
       <GlobalStyle />
@@ -32,9 +40,16 @@ const App = () => {
               <Route path={registration} element={<RegistrationPage />} />
               <Route element={<RequireAuth />}>
                 <Route path={main} element={<MainPage />} />
+<<<<<<< HEAD
               
               </Route>
               <Route path={maintenance} element={<MaintenancePage/>}/>
+=======
+                {/*Learning page*/}
+                {/*Maintenance page*/}
+              </Route>
+              <Route path={learn} element={<LearningPage />} />
+>>>>>>> 74d7b17... Prepared Learning page startup
               <Route path="*" element={<div>404</div>} />
             </Route>
           </Routes>

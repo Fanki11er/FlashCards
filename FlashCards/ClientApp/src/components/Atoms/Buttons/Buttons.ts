@@ -19,7 +19,11 @@ export const DefaultButton = styled.button`
 `;
 
 export const MainMenuButton = styled(DefaultButton)`
-    width: 350px;
+  width: 350px;
+  text-decoration: none;
+  :visited {
+    color: ${({ theme }) => theme.colors.buttonGreen};
+  }
 `;
 
 export const CancelButton = styled(DefaultButton)`
