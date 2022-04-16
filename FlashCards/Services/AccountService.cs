@@ -14,6 +14,7 @@ namespace FlashCards.Services
     {
         void RegisterUser(RegisterUserDto dto);
         string GenerateJwt(LoginDto dto);
+        AuthUserDto GetUser(LoginDto dto);
     }
     public class AccountService: IAccountService
     {
@@ -38,6 +39,16 @@ namespace FlashCards.Services
             user.Password = hashedPassword;
             _context.Users.Add(user);
             _context.SaveChanges();
+        }
+
+        public AuthUserDto GetUser(LoginDto dto)
+        {
+            var user = _context.Users.FirstOrDefault(u => u.Email == dto.Email);
+            if (user is null)
+            {
+                throw new BadRequestException("Nie znaleziono użytkownika");
+            }
+            return new AuthUserDto(user.Name, "", user.DailyFlashCards, user.MaximumBreak, user.PercentNew );
         }
 
         public string GenerateJwt(LoginDto dto)

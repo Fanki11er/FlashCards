@@ -26,7 +26,9 @@ namespace FlashCards.Controllers
         {
 
             string token = _accountService.GenerateJwt(dto);
-            return Ok(token);
+            var authUser = _accountService.GetUser(dto);
+            authUser.AccessToken = token;
+            return Ok(authUser);
         }
     }
 }
