@@ -1,11 +1,12 @@
 export interface UserSettings {
-  DailyFlashCards: number;
-  MaximumBreak: number;
-  PercentNew: number;
+  dailyFlashCards: number;
+  maximumBreak: number;
+  percentNew: number;
 }
 export interface AuthUser {
-  Name: string;
-  Settings: UserSettings;
+  id: number;
+  name: string;
+  settings: UserSettings;
   accessToken?: string;
 }
 
@@ -14,4 +15,3 @@ export interface FlashCardsStatus {
   ToLearnAmount: number;
   NewAmount: number;
 }
-

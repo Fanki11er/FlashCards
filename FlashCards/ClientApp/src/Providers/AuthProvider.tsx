@@ -12,11 +12,12 @@ interface AuthContextInterface {
 export const AuthContext = createContext<AuthContextInterface>({
   setAuth: () => {},
   auth: {
-    Name: '',
-    Settings: {
-      DailyFlashCards: 10,
-      MaximumBreak: 60,
-      PercentNew: 30,
+    id: 0,
+    name: '',
+    settings: {
+      dailyFlashCards: 10,
+      maximumBreak: 60,
+      percentNew: 30,
     },
     accessToken: '',
   },
@@ -25,11 +26,12 @@ export const AuthContext = createContext<AuthContextInterface>({
 const AuthProvider = (props: Props) => {
   const { children } = props;
   const [auth, setAuth] = useState<AuthUser>({
-    Name: '',
-    Settings: {
-      DailyFlashCards: 10,
-      MaximumBreak: 60,
-      PercentNew: 30,
+    id: 0,
+    name: '',
+    settings: {
+      dailyFlashCards: 10,
+      maximumBreak: 60,
+      percentNew: 30,
     },
     accessToken: '',
   });

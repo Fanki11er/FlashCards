@@ -4,10 +4,10 @@ import useAuth from './useAuth';
 
 const useRefreshToken = () => {
   const { setAuth } = useAuth();
-  const { refreshRoute } = endpoints;
+  const { refreshEndpoint } = endpoints;
 
   const refresh = async () => {
-    const response = await axios.get(refreshRoute, {
+    const response = await axios.get(refreshEndpoint, {
       withCredentials: true,
     });
     setAuth((prev) => {
@@ -23,4 +23,3 @@ const useRefreshToken = () => {
 };
 
 export default useRefreshToken;
-
