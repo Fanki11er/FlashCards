@@ -3,7 +3,6 @@ const routes = {
   login: '/Login',
   registration: '/Registration',
   main: '/Main',
-  refreshRoute: '/Refresh',
 };
 
 export default routes;

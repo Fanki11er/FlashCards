@@ -9,3 +9,9 @@ export interface AuthUser {
   accessToken?: string;
 }
 
+export interface FlashCardsStatus {
+  AllAmount: number;
+  ToLearnAmount: number;
+  NewAmount: number;
+}
+
