@@ -1,11 +1,13 @@
 ﻿using FlashCards.Data;
 using FlashCards.Entities;
 using FlashCards.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 
 namespace FlashCards.Controllers
 {
     [Route("FlashCards")]
+    [Authorize]
     public class FlashCardsController: ControllerBase
     {
         private readonly FlashCardsDbContext _dbContext;

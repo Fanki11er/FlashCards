@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
-import { axiosPrivate } from '../../Api/axios';
+//import { axiosPrivate } from '../../Api/axios';
 import endpoints from '../../Api/endpoints';
 import MainMenu from '../../components/Organisms/MainMenu/MainMenu';
 import useAuth from '../../Hooks/useAuth';
+import useAxiosPrivate from '../../Hooks/useAxiosPrivate';
 import { FlashCardsStatus } from '../../Interfaces/Interfaces';
 import routes from '../../Routes/routes';
 import { MainPageWrapper } from './MainPage.styles';
@@ -16,6 +17,7 @@ const MainPage = () => {
   const navigate = useNavigate();
   const location = useLocation();
   const { auth } = useAuth();
+  const axiosPrivate = useAxiosPrivate();
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
@@ -42,7 +44,7 @@ const MainPage = () => {
       isMounted = false;
       controller.abort();
     };
-  }, [statusEndpoint, navigate, location, login, auth]);
+  }, [statusEndpoint, navigate, location, login, auth, axiosPrivate]);
   return (
     <MainPageWrapper>
       <MainMenu flashCardsInfo={flashCardsInfo} />

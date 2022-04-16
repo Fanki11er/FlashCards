@@ -77,7 +77,7 @@ app.UseCors(x => x
 
 app.UseAuthentication();
 
-//app.UseAuthorization();
+app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
