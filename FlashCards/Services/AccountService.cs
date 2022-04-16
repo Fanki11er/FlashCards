@@ -48,7 +48,7 @@ namespace FlashCards.Services
             {
                 throw new BadRequestException("Nie znaleziono użytkownika");
             }
-            return new AuthUserDto(user.Name, "", user.DailyFlashCards, user.MaximumBreak, user.PercentNew );
+            return new AuthUserDto(user.Id, user.Name, "", user.DailyFlashCards, user.MaximumBreak, user.PercentNew );
         }
 
         public string GenerateJwt(LoginDto dto)

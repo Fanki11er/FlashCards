@@ -1,9 +1,9 @@
 const endpoints = {
   baseURL: 'https://localhost:7290',
-  register: '/account/register',
-  login: '/account/login',
-  refreshRoute: '/Refresh',
-  status: '/FlashCards/Status',
+  registerEndpoint: '/account/register',
+  loginEndpoint: '/account/login',
+  refreshEndpoint: '/Refresh',
+  statusEndpoint: '/FlashCards/Status',
 };
 
 export default endpoints;

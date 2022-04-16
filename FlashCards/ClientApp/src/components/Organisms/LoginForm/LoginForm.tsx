@@ -1,11 +1,11 @@
 import { Formik } from 'formik';
-//import { useLocation } from 'react-router';
+import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
 import axios from '../../../Api/axios';
-//import endpoints from '../../../Api/endpoints';
+import endpoints from '../../../Api/endpoints';
 import useAuth from '../../../Hooks/useAuth';
 import { AuthUser } from '../../../Interfaces/Interfaces';
-import routes from '../../../Routes/routes';
+//import routes from '../../../Routes/routes';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
@@ -16,27 +16,27 @@ interface MyFormValues {
   password: string;
 }
 
-/*type LocationProps = {
+type LocationProps = {
   state: {
     from: Location;
   };
-};*/
+};
 const LoginForm = () => {
   const initialValues: MyFormValues = { email: '', password: '' };
-  //const { login } = endpoints;
+  const { loginEndpoint } = endpoints;
   const { setAuth } = useAuth();
   const navigate = useNavigate();
-  const { login } = routes;
-  //const location = useLocation() as LocationProps;
+  //const { login } = routes;
+  const location = useLocation() as LocationProps;
   //const from = location.state?.from?.pathname || '/';
   // @ts-ignore
-  //const from = location.state?.from?.pathname || '/';
+  const from = location.state?.from?.pathname || '/';
 
   const handleSubmit = async (values: MyFormValues) => {
     try {
       const { email, password } = values;
       const response = await axios.post(
-        login,
+        loginEndpoint,
         JSON.stringify({
           Email: email,
           Password: password,
@@ -48,8 +48,9 @@ const LoginForm = () => {
       );
       response && setAuth(response?.data as AuthUser);
       console.log(response);
-      //navigate(from, { replace: true });
-      navigate(login);
+      console.log(from);
+      navigate('/Main', { replace: true });
+      //navigate(login);
     } catch (error) {
       console.error(error);
     }

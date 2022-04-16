@@ -38,11 +38,11 @@ const RegistrationSchema = Yup.object().shape({
 
 const RegistrationForm = () => {
   const initialValues: MyFormValues = { name: '', password: '', email: '', confirmPassword: '' };
-  const { register } = endpoints;
+  const { registerEndpoint } = endpoints;
 
   const handleSubmit = async (userCredentials: UserRegistrationCredentials) => {
     try {
-      const response = await axios.post(register, JSON.stringify(userCredentials), {
+      const response = await axios.post(registerEndpoint, JSON.stringify(userCredentials), {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       });
