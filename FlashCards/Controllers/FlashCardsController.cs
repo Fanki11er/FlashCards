@@ -1,8 +1,10 @@
 ﻿using FlashCards.Data;
 using FlashCards.Entities;
 using FlashCards.Models;
+using FlashCards.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
 
 namespace FlashCards.Controllers
 {
@@ -10,38 +12,31 @@ namespace FlashCards.Controllers
     [Authorize]
     public class FlashCardsController: ControllerBase
     {
-        private readonly FlashCardsDbContext _dbContext;
+        private readonly IFlashCardsService _flashCardsService;
 
-        public FlashCardsController(FlashCardsDbContext dbContext)
+        public FlashCardsController(IFlashCardsService flashCardsService)
         {
-            _dbContext = dbContext;
+            _flashCardsService = flashCardsService;
         }
         [HttpPost("Create")]
         public ActionResult CreateFlashCard([FromBody]CreateFlashCardDto dto)
-        {
+        {   
             if (!ModelState.IsValid)
             {
                 return BadRequest(ModelState);
             }
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            _flashCardsService.Create(dto, userId);
 
-            var flashCard = new FlashCard();
-            flashCard.FrontText = dto.FrontText;
-            flashCard.BackText = dto.BackText;
-            flashCard.UserId = dto.UserId;
-            //Set user ID
-            _dbContext.FlashCards.Add(flashCard);
-            _dbContext.SaveChanges();
-
-            return Created($"/FlashCards/{flashCard.Id}", null);
+            //return Created($"/FlashCards/{flashCard.Id}", null);
+            return Created($"/FlashCards", null);
         }
-        [HttpGet("Status:{userId}")]
-        public ActionResult<Status> GetStatus([FromRoute]int userId)
+        [HttpGet("Status")]
+        public ActionResult<Status> GetStatus()
         {
-            var status = new Status();
-            status.AllAmount = _dbContext.FlashCards.Count(f => f.UserId == userId);
-            status.ToLearnAmount = _dbContext.FlashCards.Count(f => f.UserId == userId && f.Status == "LEARN");
-            status.NewAmount = _dbContext.FlashCards.Count(f => f.UserId == userId && f.Status == "NEW");
-            
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var status = _flashCardsService.GetStatus(userId);
+
             return Ok(status);
 
         }

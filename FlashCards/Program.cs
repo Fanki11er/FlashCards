@@ -1,4 +1,5 @@
 using FlashCards;
+using FlashCards.Authorization;
 using FlashCards.Data;
 using FlashCards.Entities;
 using FlashCards.Middleware;
@@ -8,6 +9,7 @@ using FlashCards.Services;
 using FluentValidation;
 using FluentValidation.AspNetCore;
 using Microsoft.AspNetCore.Authentication;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.IdentityModel.Tokens;
@@ -20,6 +22,8 @@ var authenticationSettings = new AuthenticationSettings();
 
 builder.Configuration.GetSection("Authentication").Bind(authenticationSettings);
 builder.Services.AddSingleton(authenticationSettings);
+builder.Services.AddScoped<IAuthorizationHandler, ResourceOperationRequirementHandler>();
+builder.Services.AddScoped<IFlashCardsService, FlashCardsService>();
 
 builder.Services.AddFluentValidation();
 builder.Services.AddAuthentication(option =>

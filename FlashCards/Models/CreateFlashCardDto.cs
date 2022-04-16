@@ -8,8 +8,7 @@ namespace FlashCards.Models
         public string FrontText { get; set; }
         [Required]
         public string BackText { get; set; }
-        [Required]
-        public int UserId { get; set; }
+       
     }
 }
 
