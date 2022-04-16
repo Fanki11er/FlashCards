@@ -9,6 +9,7 @@ import RegistrationPage from './Views/RegistrationPage/RegistrationPage';
 import routes from './Routes/routes';
 import MainPage from './Views/MainPage/MainPage';
 import AuthProvider from './Providers/AuthProvider';
+import RequireAuth from './components/Molecules/RequireAuth/RequireAuth';
 //import { Home } from './components/Home';
 //import { FetchData } from './components/FetchData';
 //import { Counter } from './components/Counter';
@@ -28,7 +29,10 @@ const App = () => {
               <Route index element={<HeroPage />} />
               <Route path={login} element={<LoginPage />} />
               <Route path={registration} element={<RegistrationPage />} />
-              <Route path={main} element={<MainPage />} />
+              <Route element={<RequireAuth />}>
+                <Route path={main} element={<MainPage />} />
+              </Route>
+              <Route path="*" element={<div>404</div>} />
             </Route>
           </Routes>
         </AuthProvider>

@@ -2,8 +2,7 @@ const routes = {
   index: '/',
   login: '/Login',
   registration: '/Registration',
-  main: '/Main'
+  main: '/Main',
 };
 
 export default routes;
-
