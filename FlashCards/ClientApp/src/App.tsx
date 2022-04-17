@@ -41,6 +41,7 @@ const App = () => {
               <Route element={<RequireAuth />}>
                 <Route path={main} element={<MainPage />} />
 <<<<<<< HEAD
+<<<<<<< HEAD
               
               </Route>
               <Route path={maintenance} element={<MaintenancePage/>}/>
@@ -50,6 +51,12 @@ const App = () => {
               </Route>
               <Route path={learn} element={<LearningPage />} />
 >>>>>>> 74d7b17... Prepared Learning page startup
+=======
+                <Route path={learn} element={<LearningPage />} />
+                {/*Maintenance page*/}
+              </Route>
+
+>>>>>>> dda7140... Disable button when there are no flashcards to learn
               <Route path="*" element={<div>404</div>} />
             </Route>
           </Routes>

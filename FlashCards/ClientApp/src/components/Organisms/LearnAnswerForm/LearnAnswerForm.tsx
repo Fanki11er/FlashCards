@@ -4,6 +4,7 @@ import { AnswerInput, StyledLearnAnswerForm } from './LearnAnswerForm.styles';
 
 interface Props {
   checkAnswer: (answer: string) => void;
+  flashCards: boolean;
 }
 
 interface MyFormValues {
@@ -11,7 +12,7 @@ interface MyFormValues {
 }
 
 const LearnAnswerForm = (props: Props) => {
-  const { checkAnswer } = props;
+  const { checkAnswer, flashCards } = props;
   const initialValues: MyFormValues = { answer: '' };
 
   return (
@@ -25,7 +26,9 @@ const LearnAnswerForm = (props: Props) => {
     >
       <StyledLearnAnswerForm>
         <AnswerInput name="answer" placeholder="Answer" />
-        <DefaultButton type="submit">Sprawdź</DefaultButton>
+        <DefaultButton className={!flashCards ? '.disable' : ''} type="submit" disabled={!flashCards ? true : false}>
+          Sprawdź
+        </DefaultButton>
       </StyledLearnAnswerForm>
     </Formik>
   );

@@ -16,10 +16,20 @@ export const DefaultButton = styled.button`
     border: 3px solid ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.orange};
   }
+  .disable {
+    //background-color: ${({ theme }) => theme.colors.inputBlue};
+    //color: ${({ theme }) => theme.colors.buttonGreen};
+    background-color: gray;
+    color: gray;
+  }
 `;
 
 export const MainMenuButton = styled(DefaultButton)`
+  display: flex;
+  align-items: center;
+  justify-content: center;
   width: 350px;
+  text-align: center;
   text-decoration: none;
   :visited {
     color: ${({ theme }) => theme.colors.buttonGreen};

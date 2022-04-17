@@ -49,7 +49,7 @@ const LearningSection = (props: Props) => {
       {!isAnswered ? (
         <FormWrapper>
           <TextField>{flashCardsToLearn.length > 0 ? flashCardsToLearn[currentIndex].frontText : ''}</TextField>
-          <LearnAnswerForm checkAnswer={checkAnswer} />
+          <LearnAnswerForm checkAnswer={checkAnswer} flashCards={flashCardsToLearn.length > 0} />
         </FormWrapper>
       ) : (
         <ResultWrapper>
