@@ -2,6 +2,8 @@ import { useEffect, useState } from 'react';
 import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
 import endpoints from '../../Api/endpoints';
+import LoadingError from '../../components/Molecules/LoadingError/LoadingError';
+import LoadingFlashCards from '../../components/Molecules/LoadingFlashCards/LoadingFlashCards';
 import LearningSection from '../../components/Organisms/LearnSection/LearnSection';
 import useAxiosPrivate from '../../Hooks/useAxiosPrivate';
 import { FlashCard } from '../../Interfaces/Interfaces';
@@ -13,6 +15,8 @@ const LearningPage = () => {
   const { login } = routes;
   const [flashCardsToLearn, setFlashCardsToLearn] = useState<FlashCard[]>([]);
   const [isUpdating, setIsUpdating] = useState<boolean>();
+  const [isLoading, setIsLoading] = useState(true);
+  const [isError, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
   const axiosPrivate = useAxiosPrivate();
@@ -22,20 +26,25 @@ const LearningPage = () => {
     const controller = new AbortController();
 
     const getLearnPortion = async () => {
+      setIsLoading(true);
+      setError('');
       try {
         const response = await axiosPrivate.get(learnEndpoint, {
           signal: controller.signal,
         });
         isMounted && setFlashCardsToLearn(response.data);
+        setIsLoading(false);
         console.log(response.data);
-      } catch (error) {
-        console.log(error);
-        navigate(login, {
+      } catch (error: any) {
+        setIsLoading(false);
+        setError(error.message);
+        console.log(error.message);
+        /*navigate(login, {
           state: {
             from: location,
           },
           replace: true,
-        });
+        });*/
       }
     };
 
@@ -63,7 +72,13 @@ const LearningPage = () => {
   };
   return (
     <LearningPageWrapper>
-      <LearningSection flashCardsToLearn={flashCardsToLearn} updateFlashCard={updateFlashCard} />
+      {isLoading ? (
+        <LoadingFlashCards />
+      ) : !isError ? (
+        <LearningSection flashCardsToLearn={flashCardsToLearn} updateFlashCard={updateFlashCard} />
+      ) : (
+        <LoadingError errorText={isError} />
+      )}
     </LearningPageWrapper>
   );
 };
