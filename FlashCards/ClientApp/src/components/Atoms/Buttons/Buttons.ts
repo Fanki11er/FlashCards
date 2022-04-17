@@ -16,11 +16,11 @@ export const DefaultButton = styled.button`
     border: 3px solid ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.orange};
   }
-  .disable {
-    //background-color: ${({ theme }) => theme.colors.inputBlue};
-    //color: ${({ theme }) => theme.colors.buttonGreen};
-    background-color: gray;
+  &.disable {
     color: gray;
+    border: 3px solid gray;
+    :hover {
+    }
   }
 `;
 

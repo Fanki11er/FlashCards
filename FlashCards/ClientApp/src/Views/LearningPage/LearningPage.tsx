@@ -60,7 +60,7 @@ const LearningPage = () => {
     console.log(isUpdating);
 
     try {
-      const response = await axiosPrivate.put(updateEndpoint, JSON.stringify(flashCard), {
+      const response = await axiosPrivate.post(updateEndpoint, JSON.stringify(flashCard), {
         headers: { 'Content-Type': 'application/json' },
       });
       setIsUpdating(false);

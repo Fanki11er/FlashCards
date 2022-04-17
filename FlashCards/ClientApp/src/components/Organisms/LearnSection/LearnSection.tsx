@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { FlashCard } from '../../../Interfaces/Interfaces';
 import { ArrowButton } from '../../Atoms/ArrowButton/ArrowButton';
 import { TextField } from '../../Atoms/TextField/TextField';
@@ -25,35 +25,43 @@ const LearningSection = (props: Props) => {
   const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
+  const [answer, setAnswer] = useState('');
 
   const checkAnswer = (answer: string) => {
-    setIsCorrectAnswer(false);
+    setAnswer(answer);
     if (answer.toLowerCase() === flashCardsToLearn[currentIndex].backText.toLowerCase()) {
       setIsCorrectAnswer(true);
     } else {
       setIsCorrectAnswer(false);
     }
     setIsAnswered(true);
-    updateFlashCard(changeFlashCardFields(flashCardsToLearn[currentIndex], isCorrectAnswer));
   };
 
   const nextFlashCard = () => {
-    if (currentIndex < flashCardsToLearn.length) {
+    if (currentIndex < flashCardsToLearn.length - 1) {
       setCurrentIndex(currentIndex + 1);
       setIsAnswered(false);
+      setAnswer('');
     }
   };
 
-  const changeFlashCardFields = (flashCard: FlashCard, isCorrect: boolean) => {
-    if (isCorrect) {
+  const changeFlashCardFields = (flashCard: FlashCard) => {
+    if (isCorrectAnswer) {
       flashCard.status = 'OK';
       flashCard.correctAtRow = flashCard.correctAtRow + 1;
     } else {
       flashCard.status = 'LEARN';
       flashCard.correctAtRow = 0;
     }
+    console.log(flashCard);
     return flashCard;
   };
+
+  useEffect(() => {
+    if (isAnswered === true) {
+      updateFlashCard(changeFlashCardFields(flashCardsToLearn[currentIndex]));
+    }
+  }, [isAnswered]); // eslint-disable-line
 
   return (
     <LearnSectionWrapper>
@@ -64,15 +72,15 @@ const LearningSection = (props: Props) => {
         </FormWrapper>
       ) : (
         <ResultWrapper>
-          <StyledTextField correct={isCorrectAnswer}>Hello</StyledTextField>
-          <StyledTextField correct={isCorrectAnswer}>Hello</StyledTextField>
+          <StyledTextField correct={isCorrectAnswer}>{flashCardsToLearn[currentIndex].backText}</StyledTextField>
+          <StyledTextField correct={isCorrectAnswer}>{answer}</StyledTextField>
           {isCorrectAnswer ? <StyledCorrect /> : <StyledWrong />}
         </ResultWrapper>
       )}
 
       <BottomSection>
         <StyledSpan>{`${currentIndex + 1} / ${flashCardsToLearn.length}`}</StyledSpan>
-        {isAnswered ? <ArrowButton onClick={() => nextFlashCard()} /> : null}
+        {isAnswered && currentIndex < flashCardsToLearn.length - 1 ? <ArrowButton onClick={() => nextFlashCard()} /> : null}
       </BottomSection>
       <StyledHut />
     </LearnSectionWrapper>

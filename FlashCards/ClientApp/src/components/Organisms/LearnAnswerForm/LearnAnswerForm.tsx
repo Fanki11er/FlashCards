@@ -26,7 +26,7 @@ const LearnAnswerForm = (props: Props) => {
     >
       <StyledLearnAnswerForm>
         <AnswerInput name="answer" placeholder="Answer" />
-        <DefaultButton className={!flashCards ? '.disable' : ''} type="submit" disabled={!flashCards ? true : false}>
+        <DefaultButton className={!flashCards ? 'disable' : ''} type="submit" disabled={!flashCards ? true : false}>
           Sprawdź
         </DefaultButton>
       </StyledLearnAnswerForm>

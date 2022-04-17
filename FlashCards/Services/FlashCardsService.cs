@@ -56,7 +56,7 @@ namespace FlashCards.Services
             {
                 return Enumerable.Empty<FlashCardDto>();
             }
-            int percentNew = (user.PercentNew / 100) * user.DailyFlashCards;
+            int percentNew =   (int)Math.Ceiling(((user.PercentNew*0.1) / 100) * user.DailyFlashCards);
             var newFlashCards = _dbContext.FlashCards.Where(f => f.UserId == userId && f.Status == "NEW").Take(percentNew);
             remaining = user.DailyFlashCards - newFlashCards.Count();
             var toLearnFlashCards = _dbContext.FlashCards.Where(f => f.UserId == userId && f.Status == "LEARN");
@@ -72,7 +72,14 @@ namespace FlashCards.Services
                 Status = flashCard.Status
             })*/
             //
-            return flashCardsToSend.Select(f => new FlashCardDto()).ToArray();
+            return flashCardsToSend.Select(f => new FlashCardDto()
+            {
+                Id = f.Id,
+                FrontText = f.FrontText,
+                BackText = f.BackText,
+                Status = f.Status,
+                CorrectAtRow = f.CorrectAtRow,
+            }).ToArray();
 
         }
 
@@ -81,13 +88,13 @@ namespace FlashCards.Services
             var days = 0; 
             var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
             var oldFlashCard = _dbContext.FlashCards.FirstOrDefault(f => f.Id == flashCard.Id && f.UserId == userId);
-            if(oldFlashCard.CorrectAtRow > 0)
+            if(flashCard.CorrectAtRow > 0)
             {
-                days = oldFlashCard.CorrectAtRow * 3;       
+                days = flashCard.CorrectAtRow * 3;       
             }
             if (days > user.MaximumBreak)
             {
-                days -= user.MaximumBreak;
+                days = user.MaximumBreak;
             }
             oldFlashCard.Status = flashCard.Status;
             oldFlashCard.CorrectAtRow = flashCard.CorrectAtRow;
