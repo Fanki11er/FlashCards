@@ -15,3 +15,13 @@ export interface FlashCardsStatus {
   toLearnAmount: number;
   newAmount: number;
 }
+
+export interface FlashCard {
+  id: number;
+  frontText: string;
+  backText: string;
+  status: Status;
+  nextSession: Date;
+}
+
+export type Status = 'NEW' | 'LEARN' | 'OK';

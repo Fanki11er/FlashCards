@@ -2,21 +2,23 @@ import { Formik } from 'formik';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { AnswerInput, StyledLearnAnswerForm } from './LearnAnswerForm.styles';
 
-interface MyFormValues {
-  email: string;
-  password: string;
+interface Props {
+  checkAnswer: (answer: string) => void;
 }
 
-const LearnAnswerForm = () => {
-  const initialValues: MyFormValues = { email: '', password: '' };
+interface MyFormValues {
+  answer: string;
+}
 
-  const handleSubmit = async (values: MyFormValues) => {};
+const LearnAnswerForm = (props: Props) => {
+  const { checkAnswer } = props;
+  const initialValues: MyFormValues = { answer: '' };
 
   return (
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
-        handleSubmit(values);
+        checkAnswer(values.answer);
 
         actions.setSubmitting(false);
       }}
