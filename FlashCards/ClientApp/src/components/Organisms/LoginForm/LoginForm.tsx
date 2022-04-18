@@ -8,8 +8,8 @@ import { AuthUser } from '../../../Interfaces/Interfaces';
 //import routes from '../../../Routes/routes';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
-import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 import FormInput from '../../Molecules/FormInput/FormInput';
+import { StyledLoginForm } from './LoginForm.styles';
 
 interface MyFormValues {
   email: string;
@@ -65,12 +65,12 @@ const LoginForm = () => {
         actions.setSubmitting(false);
       }}
     >
-      <StyledForm>
+      <StyledLoginForm>
         <FormHeader>Logowanie</FormHeader>
         <FormInput name="email" placeholder="Email" label="Email" type="email" />
         <FormInput name="password" placeholder="Hasło" label="Hasło" type="password" />
         <DefaultButton type="submit">Zaloguj</DefaultButton>
-      </StyledForm>
+      </StyledLoginForm>
     </Formik>
   );
 };
