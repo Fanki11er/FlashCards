@@ -1,5 +1,3 @@
-
-
 export const theme: AppTheme = {
   colors: {
     navigationButton: 'rgba(118, 210, 176, 0.5)',
@@ -14,6 +12,8 @@ export const theme: AppTheme = {
     lightBlue: 'rgba(19,179,242,1)',
     darkOrange: 'rgba(223,108,79,1)',
     yellow: 'rgba(236,208,111,1)',
+    lightGrey: 'rgba(171,171,163, 1)',
+    darkGrey: 'rgba(92, 102,115, 1)',
   },
   fontSizes: {
     navigationButton: '25px',
@@ -36,6 +36,8 @@ export type AppTheme = {
     lightBlue: string;
     darkOrange: string;
     yellow: string;
+    lightGrey: string;
+    darkGrey: string;
   };
   fontSizes: {
     navigationButton: string;
