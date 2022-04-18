@@ -1,3 +1,5 @@
+import internal from 'stream';
+
 export interface UserSettings {
   dailyFlashCards: number;
   maximumBreak: number;
@@ -22,6 +24,7 @@ export interface FlashCard {
   backText: string;
   status: Status;
   nextSession: Date;
+  correctAtRow: number;
 }
 
 export type Status = 'NEW' | 'LEARN' | 'OK';

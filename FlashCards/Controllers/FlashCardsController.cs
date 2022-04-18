@@ -41,6 +41,21 @@ namespace FlashCards.Controllers
 
         }
 
+        [HttpGet("Learn/Portion")]
+        public ActionResult<IEnumerable<FlashCard>> GetFlashCardsToLearn()
+        {
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var flashCards =  _flashCardsService.GetFlashCardsToLearn(userId);
+            return Ok(flashCards);
+        }
+
+        [HttpPost("Learn/Update")]
+        public ActionResult UpdateLearnedFlashCard([FromBody] FlashCardDto flashCard)
+        {
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            _flashCardsService.UpdateProcessedFlashCard(flashCard, userId);
+            return Ok();
+        }
     }
     
 }

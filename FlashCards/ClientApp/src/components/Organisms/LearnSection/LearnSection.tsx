@@ -34,7 +34,7 @@ const LearningSection = (props: Props) => {
       setIsCorrectAnswer(false);
     }
     setIsAnswered(true);
-    updateFlashCard(flashCardsToLearn[currentIndex]);
+    updateFlashCard(changeFlashCardFields(flashCardsToLearn[currentIndex], isCorrectAnswer));
   };
 
   const nextFlashCard = () => {
@@ -42,6 +42,17 @@ const LearningSection = (props: Props) => {
       setCurrentIndex(currentIndex + 1);
       setIsAnswered(false);
     }
+  };
+
+  const changeFlashCardFields = (flashCard: FlashCard, isCorrect: boolean) => {
+    if (isCorrect) {
+      flashCard.status = 'OK';
+      flashCard.correctAtRow = flashCard.correctAtRow + 1;
+    } else {
+      flashCard.status = 'LEARN';
+      flashCard.correctAtRow = 0;
+    }
+    return flashCard;
   };
 
   return (

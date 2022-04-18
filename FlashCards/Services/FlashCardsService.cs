@@ -10,6 +10,12 @@ namespace FlashCards.Services
     {
         void Create(CreateFlashCardDto dto, int userId);
         Status GetStatus(int userId);
+
+        IEnumerable<FlashCardDto> GetFlashCardsToLearn(int userId);
+
+        void UpdateProcessedFlashCard(FlashCardDto flashCard, int userId);
+
+
     }
     public class FlashCardsService : IFlashCardsService
     {
@@ -40,6 +46,57 @@ namespace FlashCards.Services
             status.NewAmount = _dbContext.FlashCards.Count(f => f.UserId == userId && f.Status == "NEW");
 
             return status;
+        }
+
+       public IEnumerable<FlashCardDto>  GetFlashCardsToLearn(int userId)
+        {
+            var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
+            int remaining = 0;
+            if(user == null)
+            {
+                return Enumerable.Empty<FlashCardDto>();
+            }
+            int percentNew = (user.PercentNew / 100) * user.DailyFlashCards;
+            var newFlashCards = _dbContext.FlashCards.Where(f => f.UserId == userId && f.Status == "NEW").Take(percentNew);
+            remaining = user.DailyFlashCards - newFlashCards.Count();
+            var toLearnFlashCards = _dbContext.FlashCards.Where(f => f.UserId == userId && f.Status == "LEARN");
+            var flashCardsToSend = newFlashCards.Union(toLearnFlashCards);
+            remaining = user.DailyFlashCards - flashCardsToSend.Count();
+            var repeatFlashCards = _dbContext.FlashCards.Where(f => f.UserId == userId && f.NextSession <= DateTime.Now).Except(flashCardsToSend).Take(remaining);
+            flashCardsToSend = flashCardsToSend.Union(repeatFlashCards);
+            /*var flashCardsToSend = flashCards.Select(flashCard => new FlashCardDto()
+            {
+                Id = flashCard.Id,
+                FrontText = flashCard.FrontText,
+                BackText = flashCard.BackText,
+                Status = flashCard.Status
+            })*/
+            //
+            return flashCardsToSend.Select(f => new FlashCardDto()).ToArray();
+
+        }
+
+        public void UpdateProcessedFlashCard(FlashCardDto flashCard, int userId)
+        {
+            var days = 0; 
+            var user = _dbContext.Users.FirstOrDefault(u => u.Id == userId);
+            var oldFlashCard = _dbContext.FlashCards.FirstOrDefault(f => f.Id == flashCard.Id && f.UserId == userId);
+            if(oldFlashCard.CorrectAtRow > 0)
+            {
+                days = oldFlashCard.CorrectAtRow * 3;       
+            }
+            if (days > user.MaximumBreak)
+            {
+                days -= user.MaximumBreak;
+            }
+            oldFlashCard.Status = flashCard.Status;
+            oldFlashCard.CorrectAtRow = flashCard.CorrectAtRow;
+            
+            oldFlashCard.NextSession = DateTime.Now.AddDays(days);
+
+            _dbContext.FlashCards.Update(oldFlashCard);
+            _dbContext.SaveChanges();
+            
         }
     }
 
