@@ -36,22 +36,20 @@ export const MainMenuButton = styled(DefaultButton)`
   }
 `;
 
-<<<<<<< HEAD
 export const CancelButton = styled(DefaultButton)`
+  color: ${({ theme }) => theme.colors.darkOrange};
+  border: 3px solid ${({ theme }) => theme.colors.purple};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  :visited {
     color: ${({ theme }) => theme.colors.darkOrange};
-    border: 3px solid ${({ theme }) => theme.colors.purple};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    :visited {
-      color: ${({ theme }) => theme.colors.darkOrange};
-    }
-=======
+  }
+`;
 export const DisabledButton = styled(MainMenuButton)`
   color: ${({ theme }) => theme.colors.lightGrey};
   border: 3px solid ${({ theme }) => theme.colors.lightGrey};
   background-color: ${({ theme }) => theme.colors.darkGrey};
   pointer-events: none;
->>>>>>> c96c79e... Fixed styles of main menu
 `;
