@@ -1,6 +1,7 @@
 import { useEffect, useState } from 'react';
 import { FlashCard } from '../../../Interfaces/Interfaces';
 import { ArrowButton } from '../../Atoms/ArrowButton/ArrowButton';
+import { RefreshButton } from '../../Atoms/RefreshButton/RefreshButton';
 import { TextField } from '../../Atoms/TextField/TextField';
 import LearnAnswerForm from '../LearnAnswerForm/LearnAnswerForm';
 import {
@@ -18,10 +19,11 @@ import {
 interface Props {
   flashCardsToLearn: FlashCard[];
   updateFlashCard: (flashCard: FlashCard) => Promise<void>;
+  refresh: () => void;
 }
 
 const LearningSection = (props: Props) => {
-  const { flashCardsToLearn, updateFlashCard } = props;
+  const { flashCardsToLearn, updateFlashCard, refresh } = props;
   const [isCorrectAnswer, setIsCorrectAnswer] = useState<boolean>(false);
   const [currentIndex, setCurrentIndex] = useState(0);
   const [isAnswered, setIsAnswered] = useState<boolean>(false);
@@ -79,8 +81,12 @@ const LearningSection = (props: Props) => {
       )}
 
       <BottomSection>
-        <StyledSpan>{`${currentIndex + 1} / ${flashCardsToLearn.length}`}</StyledSpan>
-        {isAnswered && currentIndex < flashCardsToLearn.length - 1 ? <ArrowButton onClick={() => nextFlashCard()} /> : null}
+        <StyledSpan>{flashCardsToLearn.length ? `${currentIndex + 1} / ${flashCardsToLearn.length}` : `0 / 0`}</StyledSpan>
+        {isAnswered && currentIndex < flashCardsToLearn.length - 1 ? (
+          <ArrowButton onClick={() => nextFlashCard()} />
+        ) : isAnswered && currentIndex === flashCardsToLearn.length - 1 ? (
+          <RefreshButton onClick={() => refresh()} />
+        ) : null}
       </BottomSection>
       <StyledHut />
     </LearnSectionWrapper>

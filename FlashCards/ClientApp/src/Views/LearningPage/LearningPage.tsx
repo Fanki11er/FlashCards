@@ -8,7 +8,7 @@ import LearningSection from '../../components/Organisms/LearnSection/LearnSectio
 import useAxiosPrivate from '../../Hooks/useAxiosPrivate';
 import { FlashCard } from '../../Interfaces/Interfaces';
 import routes from '../../Routes/routes';
-import { LearningPageWrapper } from './LearningPage.styles';
+import { InformationField, InfoWrapper, LearningPageWrapper, NothingToLearn } from './LearningPage.styles';
 
 const LearningPage = () => {
   const { learnEndpoint, updateEndpoint } = endpoints;
@@ -19,6 +19,7 @@ const LearningPage = () => {
   const [isError, setError] = useState('');
   const navigate = useNavigate();
   const location = useLocation();
+  const [refresh, setRefresh] = useState(false);
   const axiosPrivate = useAxiosPrivate();
 
   useEffect(() => {
@@ -53,7 +54,7 @@ const LearningPage = () => {
       isMounted = false;
       controller.abort();
     };
-  }, [navigate, location, login, axiosPrivate, learnEndpoint]);
+  }, [navigate, location, login, axiosPrivate, learnEndpoint, refresh]);
 
   const updateFlashCard = async (flashCard: FlashCard) => {
     setIsUpdating(true);
@@ -70,12 +71,23 @@ const LearningPage = () => {
       setIsUpdating(false);
     }
   };
+
+  const refreshFlashCards = () => {
+    setRefresh(!refresh);
+  };
   return (
     <LearningPageWrapper>
       {isLoading ? (
         <LoadingFlashCards />
       ) : !isError ? (
-        <LearningSection flashCardsToLearn={flashCardsToLearn} updateFlashCard={updateFlashCard} />
+        flashCardsToLearn.length ? (
+          <LearningSection flashCardsToLearn={flashCardsToLearn} updateFlashCard={updateFlashCard} refresh={refreshFlashCards} />
+        ) : (
+          <InfoWrapper>
+            <NothingToLearn />
+            <InformationField>Brak fiszek na dziś</InformationField>
+          </InfoWrapper>
+        )
       ) : (
         <LoadingError errorText={isError} />
       )}

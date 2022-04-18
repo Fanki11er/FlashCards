@@ -1,5 +1,3 @@
-import internal from 'stream';
-
 export interface UserSettings {
   dailyFlashCards: number;
   maximumBreak: number;
