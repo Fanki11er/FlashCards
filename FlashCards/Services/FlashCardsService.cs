@@ -34,7 +34,13 @@ namespace FlashCards.Services
             flashCard.BackText = dto.BackText;
             flashCard.UserId = userId;
 
+            var reversedFlashCard = new FlashCard();
+            reversedFlashCard.FrontText = dto.BackText;
+            reversedFlashCard.BackText = dto.FrontText;
+            reversedFlashCard.UserId = userId;
+
             _dbContext.FlashCards.Add(flashCard);
+            _dbContext.FlashCards.Add(reversedFlashCard);
             _dbContext.SaveChanges();
         }
 

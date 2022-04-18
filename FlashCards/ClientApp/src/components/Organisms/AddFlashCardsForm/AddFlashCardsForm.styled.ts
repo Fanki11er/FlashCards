@@ -3,6 +3,7 @@ import styled from "styled-components";
 import { Field } from "formik";
 import { ThemeProps } from "../../../Theme/theme";
 import ErrorInfo from "../../Atoms/ErrorInfo/ErrorInfo";
+import { ReactComponent as Person } from '../../../Assets/Svg/Person_adding.svg';
 
 export const StyledAddFlashCardsForm = styled(StyledForm)`
         grid-template-rows: 150px 150px 150px 150px;
@@ -12,6 +13,7 @@ export const StyledAddFlashCardsForm = styled(StyledForm)`
         background-image: none;
         padding: 0;
         margin: 0;
+        position: relative;
     
 `;
 
@@ -60,4 +62,11 @@ export const StyledError = styled(ErrorInfo)`
         padding: 0px 10px;
         height: 35px;
         transform: translateX(0);
+`;
+
+export const StyledPerson = styled(Person)`
+        height: 80%;
+        position: absolute;
+        bottom: -30px;
+        left: -140px;
 `;
