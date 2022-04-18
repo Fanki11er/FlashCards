@@ -4,6 +4,7 @@ const endpoints = {
   loginEndpoint: '/account/login',
   refreshEndpoint: '/Refresh',
   statusEndpoint: '/FlashCards/Status',
+  addFlashCardEndpoint: '/FlashCards/Add',
 };
 
 export default endpoints;

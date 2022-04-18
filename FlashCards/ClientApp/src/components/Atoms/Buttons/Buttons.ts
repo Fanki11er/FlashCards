@@ -21,3 +21,15 @@ export const DefaultButton = styled.button`
 export const MainMenuButton = styled(DefaultButton)`
     width: 350px;
 `;
+
+export const CancelButton = styled(DefaultButton)`
+    color: ${({ theme }) => theme.colors.darkOrange};
+    border: 3px solid ${({ theme }) => theme.colors.purple};
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    :visited {
+      color: ${({ theme }) => theme.colors.darkOrange};
+    }
+`;

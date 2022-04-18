@@ -9,10 +9,9 @@ export const StyledForm = styled(Form)`
   align-self: center;
   width: 100%;
   height: 550px;
-  background: linear-gradient(135deg, #5172bf, #4eb1d1);
   border-radius: 15px;
   align-items: center;
   justify-content: center;
-  padding-left: 4rem;
+ 
 `;
 

@@ -5,6 +5,8 @@ export const StyledRegistrationForm = styled(StyledForm)`
   grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
   height: 680px;
   width: 100%;
+  background: linear-gradient(135deg, #5172bf, #4eb1d1);
+  padding-left: 4rem;
 `;
 
 export const InputWrapper = styled.div`
