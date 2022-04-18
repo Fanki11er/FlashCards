@@ -11,6 +11,8 @@ import MainPage from './Views/MainPage/MainPage';
 import AuthProvider from './Providers/AuthProvider';
 import RequireAuth from './components/Molecules/RequireAuth/RequireAuth';
 import MaintenancePage from './Views/MaintenancePage/MaintenancePage';
+import LearningPage from './Views/LearningPage/LearningPage';
+
 //import { Home } from './components/Home';
 //import { FetchData } from './components/FetchData';
 //import { Counter } from './components/Counter';
@@ -19,7 +21,7 @@ import MaintenancePage from './Views/MaintenancePage/MaintenancePage';
 //import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 
 const App = () => {
-  const { index, login, registration, main, maintenance } = routes;
+  const { index, login, registration, main, maintenance, learn } = routes;
   return (
     <>
       <GlobalStyle />
@@ -32,9 +34,9 @@ const App = () => {
               <Route path={registration} element={<RegistrationPage />} />
               <Route element={<RequireAuth />}>
                 <Route path={main} element={<MainPage />} />
-              
+                <Route path={maintenance} element={<MaintenancePage />} />
+                <Route path={learn} element={<LearningPage />} />
               </Route>
-              <Route path={maintenance} element={<MaintenancePage/>}/>
               <Route path="*" element={<div>404</div>} />
             </Route>
           </Routes>

@@ -4,6 +4,7 @@ const routes = {
   registration: '/Registration',
   main: '/Main',
   maintenance: '/Maintenance',
+  learn: '/Learn',
 };
 
 export default routes;

@@ -5,6 +5,8 @@ const endpoints = {
   refreshEndpoint: '/Refresh',
   statusEndpoint: '/FlashCards/Status',
   addFlashCardEndpoint: '/FlashCards/Add',
+  learnEndpoint: '/FlashCards/Learn/Portion',
+  updateEndpoint: '/FlashCards/Update',
 };
 
 export default endpoints;

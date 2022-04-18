@@ -1,4 +1,5 @@
-import { FormInputWrapper, Label, StyledField } from './FormInput.styles';
+import { DefaultField } from '../../Atoms/DefaultField/DefaultField';
+import { FormInputWrapper, Label } from './FormInput.styles';
 
 interface InputProps {
   name: string;
@@ -12,7 +13,7 @@ const FormInput = (props: InputProps) => {
   return (
     <FormInputWrapper>
       <Label>{label}</Label>
-      <StyledField name={name} placeholder={placeholder} type={type ? type : 'text'} />
+      <DefaultField name={name} placeholder={placeholder} type={type ? type : 'text'} />
     </FormInputWrapper>
   );
 };

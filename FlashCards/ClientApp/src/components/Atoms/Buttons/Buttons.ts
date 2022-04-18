@@ -16,20 +16,40 @@ export const DefaultButton = styled.button`
     border: 3px solid ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.orange};
   }
+  &.disable {
+    color: ${({ theme }) => theme.colors.lightGrey};
+    border: 3px solid ${({ theme }) => theme.colors.lightGrey};
+    background-color: ${({ theme }) => theme.colors.darkGrey};
+    pointer-events: none;
+  }
 `;
 
 export const MainMenuButton = styled(DefaultButton)`
-    width: 350px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 350px;
+  text-align: center;
+  text-decoration: none;
+  :visited {
+    color: ${({ theme }) => theme.colors.buttonGreen};
+  }
 `;
 
 export const CancelButton = styled(DefaultButton)`
+  color: ${({ theme }) => theme.colors.darkOrange};
+  border: 3px solid ${({ theme }) => theme.colors.purple};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  :visited {
     color: ${({ theme }) => theme.colors.darkOrange};
-    border: 3px solid ${({ theme }) => theme.colors.purple};
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    text-decoration: none;
-    :visited {
-      color: ${({ theme }) => theme.colors.darkOrange};
-    }
+  }
+`;
+export const DisabledButton = styled(MainMenuButton)`
+  color: ${({ theme }) => theme.colors.lightGrey};
+  border: 3px solid ${({ theme }) => theme.colors.lightGrey};
+  background-color: ${({ theme }) => theme.colors.darkGrey};
+  pointer-events: none;
 `;

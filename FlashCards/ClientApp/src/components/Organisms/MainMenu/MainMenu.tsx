@@ -1,5 +1,7 @@
+import { Link } from 'react-router-dom';
 import { FlashCardsStatus } from '../../../Interfaces/Interfaces';
-import { MainMenuButton } from '../../Atoms/Buttons/Buttons';
+import routes from '../../../Routes/routes';
+import { DisabledButton, MainMenuButton } from '../../Atoms/Buttons/Buttons';
 import FlashCardsInfo from '../../Molecules/FlashCardsInfo/FlashCardsInfo';
 import { MainMenuWrapper, MenuButtonsWrapper } from './MainMenu.styles';
 
@@ -8,14 +10,25 @@ interface Props {
 }
 
 const MainMenu = (props: Props) => {
+  const { learn } = routes;
   return (
     <MainMenuWrapper>
       <FlashCardsInfo flashCardsInfo={props.flashCardsInfo} />
       <MenuButtonsWrapper>
-        <MainMenuButton>Ucz się</MainMenuButton>
+        {props.flashCardsInfo && props.flashCardsInfo.allAmount > 0 ? (
+          <MainMenuButton as={Link} to={learn}>
+            Ucz się
+          </MainMenuButton>
+        ) : (
+          <DisabledButton>Ucz się</DisabledButton>
+        )}
+
         <MainMenuButton>Dodaj fiszkę</MainMenuButton>
-        <MainMenuButton>Edytuj fiszkę</MainMenuButton>
-        <MainMenuButton>Usuń fiszkę</MainMenuButton>
+        {props.flashCardsInfo && props.flashCardsInfo.allAmount > 0 ? (
+          <MainMenuButton>Edytuj fiszkę</MainMenuButton>
+        ) : (
+          <DisabledButton>Edytuj fiszkę</DisabledButton>
+        )}
       </MenuButtonsWrapper>
     </MainMenuWrapper>
   );
