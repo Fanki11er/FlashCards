@@ -53,3 +53,13 @@ export const DisabledButton = styled(MainMenuButton)`
   background-color: ${({ theme }) => theme.colors.darkGrey};
   pointer-events: none;
 `;
+
+export const SmallerEditButton = styled(DefaultButton)`
+  margin: 0;
+  width: 200px;
+`;
+
+export const SmallerCancelButton = styled(CancelButton)`
+  margin: 0;
+  width: 200px;
+`;
