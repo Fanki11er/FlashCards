@@ -2,7 +2,6 @@ import { ErrorMessage, Formik } from 'formik';
 //import { useLocation } from 'react-router';
 import { useNavigate } from 'react-router';
 import { Link } from 'react-router-dom';
-import axios from '../../../Api/axios';
 import endpoints from '../../../Api/endpoints';
 //import useAuth from '../../../Hooks/useAuth';
 //import { AuthUser } from '../../../Interfaces/Interfaces';
@@ -14,6 +13,7 @@ import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 import { ButtonsWrapper, InputWrapper, NewFlashCardsInput, StyledError } from './AddFlashCardsForm.styled';
 import * as Yup from 'yup';
+import useAxiosPrivate from '../../../Hooks/useAxiosPrivate';
 
 interface MyFormValues {
   frontText: string;
@@ -27,9 +27,10 @@ interface MyFormValues {
 };*/
 const AddFlashCardsForm = () => {
   const initialValues: MyFormValues = { frontText: '', backText: '' };
-  const { addFlashCardEndpoint } = endpoints;
+  const { createFlashCardEndpoint } = endpoints;
   const { main } = routes;
   const navigate = useNavigate();
+  const axiosPrivate = useAxiosPrivate();
   //const { login } = routes;
   //const location = useLocation() as LocationProps;
   //const from = location.state?.from?.pathname || '/';
@@ -44,8 +45,8 @@ const AddFlashCardsForm = () => {
   const handleSubmit = async (values: MyFormValues) => {
     try {
       const { frontText, backText } = values;
-      const response = await axios.post(
-        addFlashCardEndpoint,
+      const response = await axiosPrivate.post(
+        createFlashCardEndpoint,
         JSON.stringify({
           FrontText: frontText,
           BackText: backText,
