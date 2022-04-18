@@ -1,5 +1,6 @@
 import { ReactComponent as Logo } from '../../../Assets/Svg/Logo.svg';
 import styled from 'styled-components';
+import { Link } from 'react-router-dom';
 
 const StyledLogo = styled(Logo)`
   height: 150px;
@@ -7,3 +8,8 @@ const StyledLogo = styled(Logo)`
 `;
 
 export default StyledLogo;
+
+export const Test = styled(Link)`
+  width: fit-content;
+  height: fit-content;
+`;
