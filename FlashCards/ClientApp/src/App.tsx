@@ -34,11 +34,10 @@ const App = () => {
               <Route path={registration} element={<RegistrationPage />} />
               <Route element={<RequireAuth />}>
                 <Route path={main} element={<MainPage />} />
-                
+                <Route path={maintenance} element={<MaintenancePage />} />
                 <Route path={learn} element={<LearningPage />} />
               </Route>
               <Route path="*" element={<div>404</div>} />
-              <Route path={maintenance} element={<MaintenancePage />} />
             </Route>
           </Routes>
         </AuthProvider>

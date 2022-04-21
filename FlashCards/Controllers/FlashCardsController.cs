@@ -56,6 +56,14 @@ namespace FlashCards.Controllers
             _flashCardsService.UpdateProcessedFlashCard(flashCard, userId);
             return Ok();
         }
+
+        [HttpGet("GetAll")]
+        public ActionResult<IEnumerable<FlashCard>> GetFlashCards()
+        {
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var flashCards = _flashCardsService.GetAllFlashCards(userId);
+            return Ok(flashCards);
+        }
     }
     
 }
