@@ -1,21 +1,26 @@
+import { FlashCard } from "../../../Interfaces/Interfaces";
 import FlashCardsListElement from "../../Atoms/FlashCardsListElement/FlashCardsListElement";
 import { FlashCardsListWrapper } from "./FlashCardsList.styles"
 
 
-const FlashCardsList = () =>{
-    const test = (id:number)=> console.log(id); 
+interface Props{
+   flashCards: FlashCard[];
+    select: (id: number) => void;
+}
 
+const FlashCardsList = (props: Props) =>{
+   const{flashCards, select} = props;
+
+   const renderFlashCardsList = (flashCards: FlashCard[], select: (id: number) => void )=>{
+       return flashCards.map((flashCard: FlashCard)=>{
+            return (
+                <FlashCardsListElement content={`${flashCard.frontText} / ${flashCard.backText}`} id={flashCard.id} key={flashCard.id} select={select}/>
+            )
+       });
+   }
     return (
         <FlashCardsListWrapper>
-            <FlashCardsListElement content={'Pierwszy / First'} id={10} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
-            <FlashCardsListElement content={'Drugi/ Second'} id={20} select={test}/>
+           {renderFlashCardsList(flashCards, select)};
         </FlashCardsListWrapper>
     )
 }
