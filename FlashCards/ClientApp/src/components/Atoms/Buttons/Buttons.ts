@@ -53,3 +53,16 @@ export const DisabledButton = styled(MainMenuButton)`
   background-color: ${({ theme }) => theme.colors.darkGrey};
   pointer-events: none;
 `;
+
+
+export const DeleteButton = styled(DefaultButton)`
+  color: ${({ theme }) => theme.colors.darkOrange};
+  border: 3px solid ${({ theme }) => theme.colors.purple};
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  text-decoration: none;
+  :visited {
+    color: ${({ theme }) => theme.colors.errorRed};
+  }
+`;

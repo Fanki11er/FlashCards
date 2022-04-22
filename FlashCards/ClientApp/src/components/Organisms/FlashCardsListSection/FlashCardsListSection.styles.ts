@@ -20,3 +20,4 @@ export const FlashCardsListSectionWrapper = styled.div`
     justify-content: space-between;
 
 `;
+

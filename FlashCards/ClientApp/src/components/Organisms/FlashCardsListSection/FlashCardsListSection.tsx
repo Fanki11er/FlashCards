@@ -23,7 +23,7 @@ const FlashCardsListSection = () =>{
     //const [refresh, setRefresh] = useState(false);
     const axiosPrivate = useAxiosPrivate();
     const[selectedFlashCard, setSelectedFlashCard]=useState<number|null>(null);
-
+    console.log(selectedFlashCard);
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
