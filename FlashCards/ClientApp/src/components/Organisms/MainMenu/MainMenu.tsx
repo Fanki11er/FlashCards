@@ -23,9 +23,9 @@ const MainMenu = (props: Props) => {
           <DisabledButton>Ucz się</DisabledButton>
         )}
 
-        <MainMenuButton as={Link} to={maintenance}>Dodaj fiszkę</MainMenuButton>
+        <MainMenuButton as={Link} to={maintenance} state={{action: "ADD"}}>Dodaj fiszkę</MainMenuButton>
         {props.flashCardsInfo && props.flashCardsInfo.allAmount > 0 ? (
-          <MainMenuButton>Edytuj fiszkę</MainMenuButton>
+          <MainMenuButton as={Link} to={maintenance} state={{action:"EDIT"}} >Edytuj fiszkę</MainMenuButton>
         ) : (
           <DisabledButton>Edytuj fiszkę</DisabledButton>
         )}

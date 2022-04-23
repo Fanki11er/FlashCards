@@ -34,11 +34,10 @@ const App = () => {
               <Route path={registration} element={<RegistrationPage />} />
               <Route element={<RequireAuth />}>
                 <Route path={main} element={<MainPage />} />
-             
+                <Route path={maintenance} element={<MaintenancePage />} />
                 <Route path={learn} element={<LearningPage />} />
               </Route>
               <Route path="*" element={<div>404</div>} />
-              <Route path={maintenance} element={<MaintenancePage />} />
             </Route>
           </Routes>
         </AuthProvider>
@@ -47,9 +46,3 @@ const App = () => {
   );
 };
 export default App;
-/*
-  <Route exact path='/' component={Home} />
-        <Route path='/counter' component={Counter} />
-        <AuthorizeRoute path='/fetch-data' component={FetchData} />
-        <Route path={ApplicationPaths.ApiAuthorizationPrefix} component={ApiAuthorizationRoutes} />
- */

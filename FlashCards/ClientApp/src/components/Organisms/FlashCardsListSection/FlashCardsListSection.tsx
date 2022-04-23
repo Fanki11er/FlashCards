@@ -8,9 +8,12 @@ import { FlashCard } from "../../../Interfaces/Interfaces";
 import { TextField } from "../../Atoms/TextField/TextField";
 import FlashCardsList from "../FlashCardsList/FlashCardsList";
 import { FlashCardsListSectionWrapper } from "./FlashCardsListSection.styles"
+interface Props {
+  openModal: (flashCard: FlashCard) => void;
+}
 
-
-const FlashCardsListSection = () =>{
+const FlashCardsListSection = (props: Props) =>{
+  const {openModal} = props;
 
     const { allFlashCards } = endpoints;
     //const { login } = routes;
@@ -22,8 +25,8 @@ const FlashCardsListSection = () =>{
     //const location = useLocation();
     //const [refresh, setRefresh] = useState(false);
     const axiosPrivate = useAxiosPrivate();
-    const[selectedFlashCard, setSelectedFlashCard]=useState<number|null>(null);
-    console.log(selectedFlashCard);
+   // const[selectedFlashCard, setSelectedFlashCard]=useState<number|null>(null);
+    //console.log(selectedFlashCard);
     useEffect(() => {
         let isMounted = true;
         const controller = new AbortController();
@@ -58,14 +61,11 @@ const FlashCardsListSection = () =>{
         };
       }, [allFlashCards, axiosPrivate]);
 
-      const selectFlashCards = (id: number)=>{
-            setSelectedFlashCard(id);
-      }
 
     return (
         <FlashCardsListSectionWrapper>
             <TextField/>
-            <FlashCardsList flashCards={flashCards} select={selectFlashCards}/>
+            <FlashCardsList flashCards={flashCards} openModal={openModal}/>
         </FlashCardsListSectionWrapper>
     )
 }
