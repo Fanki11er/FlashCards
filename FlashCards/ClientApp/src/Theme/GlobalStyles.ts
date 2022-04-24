@@ -1,4 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
+import {theme} from './theme';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -20,9 +21,18 @@ body {
     //width:100% ;
     //min-height: 100vh ;
     //height: 120vh;
-    
-} 
 
-`;
+    ::-webkit-scrollbar{
+        width: 20px;
+        background-color: ${theme.colors.inputBlue};
+    }
+
+    ::-webkit-scrollbar-thumb{
+        background-color: ${theme.colors.listElementBlue};
+        border-radius: 15px;
+        border: 1px solid;
+    }
+    
+}`;
 
 export default GlobalStyle;
