@@ -5,7 +5,7 @@ import routes from '../../../Routes/routes';
 import { useLocation } from 'react-router';
 
 const Navigation = () => {
-  const { login, registration, main, learn } = routes;
+  const { login, registration, main, learn, maintenance } = routes;
 
   const { pathname } = useLocation();
   return (
@@ -31,7 +31,14 @@ const Navigation = () => {
           <NavigationButton to="/">Powrót</NavigationButton>
         </ButtonsWrapper>
       )}
-      {(pathname === main || pathname === learn || pathname === '/Maintenance') && (
+      {(pathname === learn || pathname === maintenance) && (
+        <ButtonsWrapper>
+          <NavigationButton to="/">Wyloguj</NavigationButton>
+          <NavigationButton to={main}>Menu</NavigationButton>
+        </ButtonsWrapper>
+      )}
+
+      {(pathname === main) && (
         <ButtonsWrapper>
           <NavigationButton to="/">Wyloguj</NavigationButton>
         </ButtonsWrapper>

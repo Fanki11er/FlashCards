@@ -15,7 +15,9 @@ namespace FlashCards.Services
 
         void UpdateProcessedFlashCard(FlashCardDto flashCard, int userId);
 
-
+        IEnumerable<FlashCardDto> GetAllFlashCards(int userId);
+        void EditFlashCard(FlashCardDto flashCard);
+        void DeleteFlashCard(int Id);
     }
     public class FlashCardsService : IFlashCardsService
     {
@@ -34,7 +36,13 @@ namespace FlashCards.Services
             flashCard.BackText = dto.BackText;
             flashCard.UserId = userId;
 
+            var reversedFlashCard = new FlashCard();
+            reversedFlashCard.FrontText = dto.BackText;
+            reversedFlashCard.BackText = dto.FrontText;
+            reversedFlashCard.UserId = userId;
+
             _dbContext.FlashCards.Add(flashCard);
+            _dbContext.FlashCards.Add(reversedFlashCard);
             _dbContext.SaveChanges();
         }
 
@@ -105,6 +113,39 @@ namespace FlashCards.Services
             _dbContext.SaveChanges();
             
         }
+        public IEnumerable<FlashCardDto> GetAllFlashCards(int userId)
+        {
+            var flashCards = _dbContext.FlashCards.Where(f => f.UserId == userId);
+            return flashCards.Select(f => new FlashCardDto()
+            {
+                Id = f.Id,
+                FrontText = f.FrontText,
+                BackText = f.BackText,
+                Status = f.Status,
+                CorrectAtRow = f.CorrectAtRow,
+            }).ToArray();
+        }
+        public void EditFlashCard(FlashCardDto flashCard)
+        {
+            var oldFlashCard = _dbContext.FlashCards.FirstOrDefault(f => f.Id == flashCard.Id);
+            oldFlashCard.FrontText = flashCard.FrontText;
+            oldFlashCard.BackText = flashCard.BackText;
+
+            _dbContext.FlashCards.Update(oldFlashCard);
+            _dbContext.SaveChanges();
+        }
+
+       public void DeleteFlashCard(int Id)
+        {
+            var flashCard = _dbContext.FlashCards.FirstOrDefault(f=> f.Id == Id);
+            if(flashCard != null)
+            {
+                _dbContext.FlashCards.Remove(flashCard);
+                _dbContext.SaveChanges();
+            }
+           
+        }
     }
+    
 
 }

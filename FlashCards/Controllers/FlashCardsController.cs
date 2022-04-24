@@ -56,6 +56,26 @@ namespace FlashCards.Controllers
             _flashCardsService.UpdateProcessedFlashCard(flashCard, userId);
             return Ok();
         }
+
+        [HttpGet("GetAll")]
+        public ActionResult<IEnumerable<FlashCard>> GetFlashCards()
+        {
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            var flashCards = _flashCardsService.GetAllFlashCards(userId);
+            return Ok(flashCards);
+        }
+        [HttpPost("Edit")]
+        public ActionResult EditFlashCards([FromBody]FlashCardDto flashCard)
+        {
+            _flashCardsService.EditFlashCard(flashCard);
+            return Ok();
+        }
+        [HttpPost("Delete")]
+        public ActionResult DeleteFlashCards([FromBody]FlashCardDto dto)
+        {
+            _flashCardsService.DeleteFlashCard(dto.Id);
+            return Ok();
+        }
     }
     
 }

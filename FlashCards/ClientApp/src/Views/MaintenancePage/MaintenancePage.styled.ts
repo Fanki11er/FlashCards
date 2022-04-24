@@ -7,4 +7,5 @@ export const MaintenancePageWrapper = styled.div`
   justify-content: center;
   align-items: center;
   background-color: transparent;
+  position: relative;
 `;
