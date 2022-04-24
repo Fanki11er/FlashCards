@@ -1,8 +1,8 @@
-import { Field } from 'formik';
+import { Field, Form } from 'formik';
 import styled from 'styled-components';
 import { ThemeProps } from '../../../Theme/theme';
 
-export const StyledSettingsForm = styled.form`
+export const StyledSettingsForm = styled(Form)`
   width: 100%;
   height: 100%;
   display: flex;
@@ -28,6 +28,12 @@ export const StyledInput = styled(Field)`
   }
   :focus {
     border: 3px solid ${(props: ThemeProps) => props.theme.colors.orange};
+  }
+
+  ::-webkit-outer-spin-button,
+  ::-webkit-inner-spin-button {
+    /* display: none; <- Crashes Chrome on hover */
+    -webkit-appearance: none;
   }
 `;
 

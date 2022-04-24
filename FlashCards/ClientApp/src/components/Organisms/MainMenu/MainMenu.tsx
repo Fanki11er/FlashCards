@@ -10,7 +10,7 @@ interface Props {
 }
 
 const MainMenu = (props: Props) => {
-  const { learn } = routes;
+  const { learn, settings } = routes;
   return (
     <MainMenuWrapper>
       <FlashCardsInfo flashCardsInfo={props.flashCardsInfo} />
@@ -29,6 +29,7 @@ const MainMenu = (props: Props) => {
         ) : (
           <DisabledButton>Edytuj fiszkę</DisabledButton>
         )}
+        <Link to={settings}>Settings</Link>
       </MenuButtonsWrapper>
     </MainMenuWrapper>
   );

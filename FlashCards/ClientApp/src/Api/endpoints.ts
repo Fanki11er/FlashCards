@@ -7,6 +7,7 @@ const endpoints = {
   addFlashCardEndpoint: '/FlashCards/Add',
   learnEndpoint: '/FlashCards/Learn/Portion',
   updateEndpoint: '/FlashCards/Update',
+  settingsEndpoint: '/account/Settings',
 };
 
 export default endpoints;
