@@ -10,7 +10,6 @@ const endpoints = {
   allFlashCards: '/FlashCards/GetAll',
   flashCardEditEndpoint: '/FlashCards/Edit',
   deleteFlashCardEndpoint: '/FlashCards/Delete',
-  updateEndpoint: '/FlashCards/Update',
   settingsEndpoint: '/account/Settings',
 };
 

@@ -11,7 +11,7 @@ import routes from '../../Routes/routes';
 import { InformationField, InfoWrapper, LearningPageWrapper, NothingToLearn } from './LearningPage.styles';
 
 const LearningPage = () => {
-  const { learnEndpoint, updateEndpoint } = endpoints;
+  const { learnEndpoint, updateLearnedFlashCardEndpoint } = endpoints;
   const { login } = routes;
   const [flashCardsToLearn, setFlashCardsToLearn] = useState<FlashCard[]>([]);
   const [isUpdating, setIsUpdating] = useState<boolean>();
@@ -61,7 +61,7 @@ const LearningPage = () => {
     console.log(isUpdating);
 
     try {
-      const response = await axiosPrivate.post(updateEndpoint, JSON.stringify(flashCard), {
+      const response = await axiosPrivate.post(updateLearnedFlashCardEndpoint, JSON.stringify(flashCard), {
         headers: { 'Content-Type': 'application/json' },
       });
       setIsUpdating(false);
@@ -96,4 +96,3 @@ const LearningPage = () => {
 };
 
 export default LearningPage;
-
