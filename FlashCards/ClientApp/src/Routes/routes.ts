@@ -5,6 +5,7 @@ const routes = {
   main: '/Main',
   maintenance: '/Maintenance',
   learn: '/Learn',
+  settings: '/Settings',
 };
 
 export default routes;

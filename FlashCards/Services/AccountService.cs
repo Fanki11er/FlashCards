@@ -15,6 +15,12 @@ namespace FlashCards.Services
         void RegisterUser(RegisterUserDto dto);
         string GenerateJwt(LoginDto dto);
         AuthUserDto GetUser(LoginDto dto);
+
+        void UpdateSettings(UserSettingsWithNameDto dto, int userId);
+
+        AuthUserDto GetUserById(int userId);
+
+
     }
     public class AccountService: IAccountService
     {
@@ -85,5 +91,34 @@ namespace FlashCards.Services
             var tokenHandler = new JwtSecurityTokenHandler();
             return tokenHandler.WriteToken(token);
         }
+
+        public void UpdateSettings(UserSettingsWithNameDto dto, int userId)
+        {
+            var user = _context.Users.FirstOrDefault(u=> u.Id == userId);
+            if (user is null)
+            {
+                throw new BadRequestException("Użytkownik nie istnieje");
+            }
+
+            user.Name = dto.UserName;
+            user.DailyFlashCards = dto.DailyFlashCards;
+            user.MaximumBreak = dto.MaximumBreak;
+            user.PercentNew = dto.PercentNew;
+            _context.Users.Update(user);
+            _context.SaveChanges();
+        }
+
+       public AuthUserDto GetUserById(int userId) {
+
+            var user = _context.Users.FirstOrDefault(u => u.Id == userId);
+            if (user is null)
+            {
+                throw new BadRequestException("Nie znaleziono użytkownika");
+            }
+            return new AuthUserDto(user.Id, user.Name, "", user.DailyFlashCards, user.MaximumBreak, user.PercentNew);
+        }
+        
+            
+        
     }
 }

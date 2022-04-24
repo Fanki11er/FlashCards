@@ -10,7 +10,7 @@ interface Props {
 }
 
 const MainMenu = (props: Props) => {
-  const { learn, maintenance } = routes;
+  const { learn, maintenance, settings } = routes;
   return (
     <MainMenuWrapper>
       <FlashCardsInfo flashCardsInfo={props.flashCardsInfo} />
@@ -23,12 +23,17 @@ const MainMenu = (props: Props) => {
           <DisabledButton>Ucz się</DisabledButton>
         )}
 
-        <MainMenuButton as={Link} to={maintenance} state={{action: "ADD"}}>Dodaj fiszkę</MainMenuButton>
+        <MainMenuButton as={Link} to={maintenance} state={{ action: 'ADD' }}>
+          Dodaj fiszkę
+        </MainMenuButton>
         {props.flashCardsInfo && props.flashCardsInfo.allAmount > 0 ? (
-          <MainMenuButton as={Link} to={maintenance} state={{action:"EDIT"}} >Edytuj fiszkę</MainMenuButton>
+          <MainMenuButton as={Link} to={maintenance} state={{ action: 'EDIT' }}>
+            Edytuj fiszkę
+          </MainMenuButton>
         ) : (
           <DisabledButton>Edytuj fiszkę</DisabledButton>
         )}
+        <Link to={settings}>Settings</Link>
       </MenuButtonsWrapper>
     </MainMenuWrapper>
   );

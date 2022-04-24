@@ -22,7 +22,6 @@ export const DefaultButton = styled.button`
     border: 3px solid ${({ theme }) => theme.colors.lightGrey};
     background-color: ${({ theme }) => theme.colors.darkGrey};
     pointer-events: none;
-    
   }
 `;
 
@@ -56,7 +55,6 @@ export const DisabledButton = styled(MainMenuButton)`
   pointer-events: none;
 `;
 
-
 export const DeleteButton = styled(DefaultButton)`
   color: ${({ theme }) => theme.colors.darkOrange};
   border: 3px solid ${({ theme }) => theme.colors.purple};
@@ -67,4 +65,13 @@ export const DeleteButton = styled(DefaultButton)`
   :visited {
     color: ${({ theme }) => theme.colors.errorRed};
   }
+`;
+export const SmallerEditButton = styled(DefaultButton)`
+  margin: 0;
+  width: 200px;
+`;
+
+export const SmallerCancelButton = styled(CancelButton)`
+  margin: 0;
+  width: 200px;
 `;

@@ -12,6 +12,7 @@ import AuthProvider from './Providers/AuthProvider';
 import RequireAuth from './components/Molecules/RequireAuth/RequireAuth';
 import MaintenancePage from './Views/MaintenancePage/MaintenancePage';
 import LearningPage from './Views/LearningPage/LearningPage';
+import SettingsPage from './Views/SettingsPage/SettingsPage';
 
 //import { Home } from './components/Home';
 //import { FetchData } from './components/FetchData';
@@ -21,7 +22,7 @@ import LearningPage from './Views/LearningPage/LearningPage';
 //import { ApplicationPaths } from './components/api-authorization/ApiAuthorizationConstants';
 
 const App = () => {
-  const { index, login, registration, main, maintenance, learn } = routes;
+  const { index, login, registration, main, maintenance, learn, settings } = routes;
   return (
     <>
       <GlobalStyle />
@@ -36,8 +37,10 @@ const App = () => {
                 <Route path={main} element={<MainPage />} />
                 <Route path={maintenance} element={<MaintenancePage />} />
                 <Route path={learn} element={<LearningPage />} />
+                <Route path={settings} element={<SettingsPage />} />
               </Route>
-              <Route path="*" element={<div>404</div>} />
+
+              <Route path="*" element={<HeroPage />} />
             </Route>
           </Routes>
         </AuthProvider>

@@ -1,6 +1,8 @@
 ﻿using FlashCards.Models;
 using FlashCards.Services;
 using Microsoft.AspNetCore.Mvc;
+using System.Security.Claims;
+
 
 namespace FlashCards.Controllers
 {   
@@ -30,5 +32,16 @@ namespace FlashCards.Controllers
             authUser.AccessToken = token;
             return Ok(authUser);
         }
+        [HttpPost("Settings")]
+        public ActionResult UpdateSettings([FromBody] UserSettingsWithNameDto dto)
+        {
+            var userId = int.Parse(User.FindFirst(c => c.Type == ClaimTypes.NameIdentifier).Value);
+            _accountService.UpdateSettings(dto, userId);
+            var user = _accountService.GetUserById(userId);
+            
+            return Ok(user);
+        }
+
+
     }
 }

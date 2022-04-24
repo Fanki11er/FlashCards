@@ -6,10 +6,12 @@ const endpoints = {
   statusEndpoint: '/FlashCards/Status',
   createFlashCardEndpoint: '/FlashCards/Create',
   learnEndpoint: '/FlashCards/Learn/Portion',
-  updateEndpoint: '/FlashCards/Learn/Update',
+  updateLearnedFlashCardEndpoint: '/FlashCards/Learn/Update',
   allFlashCards: '/FlashCards/GetAll',
   flashCardEditEndpoint: '/FlashCards/Edit',
   deleteFlashCardEndpoint: '/FlashCards/Delete',
+  updateEndpoint: '/FlashCards/Update',
+  settingsEndpoint: '/account/Settings',
 };
 
 export default endpoints;
