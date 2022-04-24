@@ -13,7 +13,7 @@ const FlashCardsList = (props: Props) =>{
 
    const select = (id: number)=> {
        const flashCard = flashCards.filter((flashCard: FlashCard)=>{
-           return flashCard.id = id;
+           return flashCard.id === id;
        } )
         openModal(flashCard[0]);
    }

@@ -12,6 +12,7 @@ export const DefaultButton = styled.button`
   justify-self: center;
   align-self: flex-start;
   margin-top: 25px;
+  user-select: none;
   :hover {
     border: 3px solid ${({ theme }) => theme.colors.orange};
     color: ${({ theme }) => theme.colors.orange};
@@ -21,6 +22,7 @@ export const DefaultButton = styled.button`
     border: 3px solid ${({ theme }) => theme.colors.lightGrey};
     background-color: ${({ theme }) => theme.colors.darkGrey};
     pointer-events: none;
+    
   }
 `;
 

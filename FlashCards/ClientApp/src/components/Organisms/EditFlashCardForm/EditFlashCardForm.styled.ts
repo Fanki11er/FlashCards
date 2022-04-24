@@ -57,4 +57,3 @@ border: 3px solid ${(props: ThemeProps) => props.theme.colors.orange};
 }
 `;
 
-

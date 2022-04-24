@@ -11,4 +11,5 @@ export const FlashCardsInfoWrapper = styled.div`
     grid-row: 1/span 1;
     padding: 20px 10px;
     justify-content: center;
+    user-select: none;
 `;

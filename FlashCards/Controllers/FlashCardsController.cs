@@ -64,6 +64,18 @@ namespace FlashCards.Controllers
             var flashCards = _flashCardsService.GetAllFlashCards(userId);
             return Ok(flashCards);
         }
+        [HttpPost("Edit")]
+        public ActionResult EditFlashCards([FromBody]FlashCardDto flashCard)
+        {
+            _flashCardsService.EditFlashCard(flashCard);
+            return Ok();
+        }
+        [HttpPost("Delete")]
+        public ActionResult DeleteFlashCards([FromBody]FlashCardDto dto)
+        {
+            _flashCardsService.DeleteFlashCard(dto.Id);
+            return Ok();
+        }
     }
     
 }

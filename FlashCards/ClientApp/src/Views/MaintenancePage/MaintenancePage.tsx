@@ -1,5 +1,7 @@
 import { useEffect, useState } from "react";
 import { useLocation, useNavigate } from "react-router";
+import EditFlashCardsForm from "../../components/Organisms/EditFlashCardForm/EditFlashCardForm";
+import EditFlashCardSection from "../../components/Organisms/EditFlashCardSection/EditFlashCardSection";
 import AddFlashCardsSection from "../../components/Organisms/AddFlashCardsSection/AddFlashCardsSection";
 import EditFlashCardModal from "../../components/Organisms/EditFlashCardModal/EditFlashCardModal";
 import FlashCardsListSection from "../../components/Organisms/FlashCardsListSection/FlashCardsListSection";
@@ -51,12 +53,25 @@ const MaintenancePage = () => {
 
     return(
         <MaintenancePageWrapper>
-            {action === "EDIT" && <FlashCardsListSection openModal={openModal}/>}
-            {action === "ADD" && <AddFlashCardsSection/>}
+             {action === "EDIT" && !selectedFlashCard && <FlashCardsListSection openModal={openModal}/>}
+            {action === "ADD" && !selectedFlashCard && <AddFlashCardsSection/>}
+            {selectedFlashCard && <EditFlashCardSection flashCard={selectedFlashCard} closeModal={closeModal} />}   
           
-           {selectedFlashCard && <EditFlashCardModal isOpened={isModalOpened} flashCard={selectedFlashCard} closeModal={closeModal}/>}
         </MaintenancePageWrapper>
     );
 };
 
 export default MaintenancePage;
+
+/*
+   {action === "EDIT" && <FlashCardsListSection openModal={openModal}/>}
+            {action === "ADD" && <AddFlashCardsSection/>}
+          
+           {selectedFlashCard && <EditFlashCardModal isOpened={isModalOpened} flashCard={selectedFlashCard} closeModal={closeModal}/>}
+ */
+
+           /**
+            * <EditFlashCardsForm flashCard={selectedFlashCard} closeModal={closeModal}/>
+             <TestForm />
+              {selectedFlashCard && <EditFlashCardModal isOpened={isModalOpened} flashCard={selectedFlashCard} closeModal={closeModal}/>}
+            */

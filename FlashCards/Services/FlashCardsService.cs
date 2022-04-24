@@ -16,6 +16,8 @@ namespace FlashCards.Services
         void UpdateProcessedFlashCard(FlashCardDto flashCard, int userId);
 
         IEnumerable<FlashCardDto> GetAllFlashCards(int userId);
+        void EditFlashCard(FlashCardDto flashCard);
+        void DeleteFlashCard(int Id);
     }
     public class FlashCardsService : IFlashCardsService
     {
@@ -122,6 +124,26 @@ namespace FlashCards.Services
                 Status = f.Status,
                 CorrectAtRow = f.CorrectAtRow,
             }).ToArray();
+        }
+        public void EditFlashCard(FlashCardDto flashCard)
+        {
+            var oldFlashCard = _dbContext.FlashCards.FirstOrDefault(f => f.Id == flashCard.Id);
+            oldFlashCard.FrontText = flashCard.FrontText;
+            oldFlashCard.BackText = flashCard.BackText;
+
+            _dbContext.FlashCards.Update(oldFlashCard);
+            _dbContext.SaveChanges();
+        }
+
+       public void DeleteFlashCard(int Id)
+        {
+            var flashCard = _dbContext.FlashCards.FirstOrDefault(f=> f.Id == Id);
+            if(flashCard != null)
+            {
+                _dbContext.FlashCards.Remove(flashCard);
+                _dbContext.SaveChanges();
+            }
+           
         }
     }
     

@@ -1,7 +1,7 @@
 import styled from "styled-components";
 
 export const EditFlashCardSectionWrapper = styled.div`
-    width: 50%;
+    width: 120%;
     height: 500px;
     padding: 90px 40px;
     background: linear-gradient(135deg, #5172bf, #4eb1d1);

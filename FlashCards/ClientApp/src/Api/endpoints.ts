@@ -9,7 +9,7 @@ const endpoints = {
   updateEndpoint: '/FlashCards/Learn/Update',
   allFlashCards: '/FlashCards/GetAll',
   flashCardEditEndpoint: '/FlashCards/Edit',
-  deleteFlashCradEndpoint: '/FlashCards/Delete',
+  deleteFlashCardEndpoint: '/FlashCards/Delete',
 };
 
 export default endpoints;

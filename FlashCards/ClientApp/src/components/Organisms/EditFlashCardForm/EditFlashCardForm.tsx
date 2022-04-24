@@ -22,48 +22,50 @@ interface Props{
   const EditFlashCardsForm = (props: Props) => {
     const {flashCard, closeModal} = props;
     const initialValues: MyFormValues = { frontText: flashCard? flashCard.frontText : "", backText: flashCard? flashCard.backText: '' };
-    const { flashCardEditEndpoint, deleteFlashCradEndpoint } = endpoints;
+    const { flashCardEditEndpoint, deleteFlashCardEndpoint } = endpoints;
     const { maintenance } = routes;
     //const navigate = useNavigate();
     const axiosPrivate = useAxiosPrivate();
 
     const handleSubmit = async (values: MyFormValues) => {
-      if(!values.frontText || values.frontText === flashCard.frontText ){
+      if(!values.frontText || !values.backText || (flashCard.frontText === values.frontText && flashCard.backText === values.backText) ){
+        
         closeModal();
         return;
       }
-      if(!values.backText || values.backText === flashCard.backText ){
-        closeModal();
-        return;
-      }
-
+      
       try {
         const { frontText, backText } = values;
       //const response = await axiosPrivate.post(
-          axiosPrivate.post(
+         const response = await  axiosPrivate.post(
           flashCardEditEndpoint,
           JSON.stringify({
             FrontText: frontText,
             BackText: backText,
+            Id: flashCard.id,
           }),
           {
             headers: { 'Content-Type': 'application/json' },
           },
         );
-  
+          console.log(response)
         //navigate(maintenance);
         closeModal();
       } catch (error) {
-        console.error(error);
+        console.log("ERRROR")
+        console.log(error);
       }
     };
 
-    const deleteFlashCard = (id: number)=>{
+    const deleteFlashCard = ()=>{
+
       try {
           axiosPrivate.post(
-          deleteFlashCradEndpoint,
+          deleteFlashCardEndpoint,
           JSON.stringify({
-            id,
+            FrontText: flashCard.frontText,
+            BackText: flashCard.backText,
+            Id: flashCard.id,
           }),
           {
             headers: { 'Content-Type': 'application/json' },
@@ -73,7 +75,8 @@ interface Props{
         //navigate(maintenance);
         closeModal();
       } catch (error) {
-        console.error(error);
+        console.log(error);
+        console.log("error")
       }
     };
     
@@ -98,7 +101,7 @@ interface Props{
           <ButtonsWrapper>
             <DefaultButton type="submit">
                 Edytuj</DefaultButton>
-            <DeleteButton onClick={()=>deleteFlashCard(flashCard.id)}>
+            <DeleteButton onClick={()=>deleteFlashCard()}>
                 Usuń
             </DeleteButton>
             <CancelButton as={Link} to={maintenance} onClick={()=> closeModal()}>
