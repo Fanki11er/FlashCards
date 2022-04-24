@@ -56,7 +56,7 @@ export const DisabledButton = styled(MainMenuButton)`
 `;
 
 export const DeleteButton = styled(DefaultButton)`
-  color: ${({ theme }) => theme.colors.darkOrange};
+  color: ${({ theme }) => theme.colors.errorRed};
   border: 3px solid ${({ theme }) => theme.colors.purple};
   display: flex;
   align-items: center;

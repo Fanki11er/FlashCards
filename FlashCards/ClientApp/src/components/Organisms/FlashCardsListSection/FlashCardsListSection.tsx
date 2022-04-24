@@ -7,7 +7,7 @@ import useAxiosPrivate from "../../../Hooks/useAxiosPrivate";
 import { FlashCard } from "../../../Interfaces/Interfaces";
 import { TextField } from "../../Atoms/TextField/TextField";
 import FlashCardsList from "../FlashCardsList/FlashCardsList";
-import { FlashCardsListSectionWrapper } from "./FlashCardsListSection.styles"
+import { FlashCardsListSectionWrapper, UpdatePerson } from "./FlashCardsListSection.styles"
 interface Props {
   openModal: (flashCard: FlashCard) => void;
 }
@@ -66,6 +66,7 @@ const FlashCardsListSection = (props: Props) =>{
         <FlashCardsListSectionWrapper>
             <TextField/>
             <FlashCardsList flashCards={flashCards} openModal={openModal}/>
+            <UpdatePerson/>
         </FlashCardsListSectionWrapper>
     )
 }

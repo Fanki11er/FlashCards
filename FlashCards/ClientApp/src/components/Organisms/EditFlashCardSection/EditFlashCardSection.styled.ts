@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { ReactComponent as Edit} from '../../../Assets/Svg/EditPerson.svg';
 
 export const EditFlashCardSectionWrapper = styled.div`
     width: 120%;
@@ -14,3 +15,9 @@ export const EditFlashCardSectionWrapper = styled.div`
    
 `;
 
+export const EditPerson = styled(Edit)`
+        position: absolute;
+        left: -300px;
+        bottom: -20px;
+
+`;

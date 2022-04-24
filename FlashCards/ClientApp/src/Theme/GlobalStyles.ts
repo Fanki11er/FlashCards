@@ -9,15 +9,17 @@ const GlobalStyle = createGlobalStyle`
 }
 html{
     font-size:62.5% ;
-    width: 100% ;
-    min-height: 100vh;
+    //width: 100% ;
+   // min-height: 100vh;
+   // height: fit-content;
 }
 body {
     font-size:1.6rem ;
     margin:0 ;
     padding:0 ;
-    width:100% ;
-    min-height: 100vh ;
+    //width:100% ;
+    //min-height: 100vh ;
+    //height: 120vh;
     
 } 
 

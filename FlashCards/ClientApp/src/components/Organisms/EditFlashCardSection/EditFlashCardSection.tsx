@@ -1,6 +1,6 @@
 import { FlashCard } from "../../../Interfaces/Interfaces";
 import EditFlashCardsForm from "../EditFlashCardForm/EditFlashCardForm";
-import { EditFlashCardSectionWrapper } from "./EditFlashCardSection.styled"
+import { EditFlashCardSectionWrapper, EditPerson } from "./EditFlashCardSection.styled"
 
 interface Props{
    flashCard: FlashCard;
@@ -12,6 +12,7 @@ const{flashCard, closeModal}=props;
     return(
         <EditFlashCardSectionWrapper>
                 <EditFlashCardsForm flashCard={flashCard} closeModal={closeModal}/>
+                <EditPerson/>
         </EditFlashCardSectionWrapper>
     )
 }
