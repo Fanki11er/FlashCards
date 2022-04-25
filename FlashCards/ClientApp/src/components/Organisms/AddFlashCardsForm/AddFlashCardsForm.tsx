@@ -9,6 +9,8 @@ import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 import { ButtonsWrapper, InputWrapper, NewFlashCardsInput, StyledError, StyledPerson } from './AddFlashCardsForm.styled';
 import * as Yup from 'yup';
 import useAxiosPrivate from '../../../Hooks/useAxiosPrivate';
+import { ConnectionInfo } from '../LoginForm/LoginForm.styles';
+import { useState } from 'react';
 
 interface MyFormValues {
   frontText: string;
@@ -20,6 +22,7 @@ const AddFlashCardsForm = () => {
   const { createFlashCardEndpoint } = endpoints;
   const { main } = routes;
   const navigate = useNavigate();
+  const [isSending, setIsSending] = useState(false);
   const axiosPrivate = useAxiosPrivate();
   const AddingSchema = Yup.object().shape({
     frontText: Yup.string().required('Pole wymagane'),
@@ -27,10 +30,10 @@ const AddFlashCardsForm = () => {
   });
 
   const handleSubmit = async (values: MyFormValues) => {
+    setIsSending(true);
     try {
       const { frontText, backText } = values;
-    //const response = await axiosPrivate.post(
-        axiosPrivate.post(
+      axiosPrivate.post(
         createFlashCardEndpoint,
         JSON.stringify({
           FrontText: frontText,
@@ -40,10 +43,17 @@ const AddFlashCardsForm = () => {
           headers: { 'Content-Type': 'application/json' },
         },
       );
-
-      navigate(main);
+      setTimeout(() => {
+        navigate(main, {
+          state: {
+            refresh: true,
+          },
+        });
+        setIsSending(false);
+      }, 1000);
     } catch (error) {
       console.error(error);
+      setIsSending(false);
     }
   };
 
@@ -68,13 +78,17 @@ const AddFlashCardsForm = () => {
           <ErrorMessage name="backText" render={(msg) => <StyledError>{msg}</StyledError>} />
         </InputWrapper>
 
-        <ButtonsWrapper>
-          <DefaultButton type="submit">Dodaj</DefaultButton>
-          <CancelButton as={Link} to={main}>
-            Anuluj
-          </CancelButton>
-        </ButtonsWrapper>
-        <StyledPerson/>
+        {isSending ? (
+          <ConnectionInfo />
+        ) : (
+          <ButtonsWrapper>
+            <DefaultButton type="submit">Dodaj</DefaultButton>
+            <CancelButton as={Link} to={main}>
+              Anuluj
+            </CancelButton>
+          </ButtonsWrapper>
+        )}
+        <StyledPerson />
       </StyledForm>
     </Formik>
   );

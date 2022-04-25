@@ -59,7 +59,6 @@ const SettingsForm = () => {
           withCredentials: true,
         },
       );
-      console.log(response);
       response && setAuth(response?.data as AuthUser);
       navigate(main);
     } catch (error) {
@@ -71,7 +70,6 @@ const SettingsForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
-        console.log('SUBMIT');
         handleSubmit(values);
         actions.setSubmitting(false);
         actions.resetForm();
