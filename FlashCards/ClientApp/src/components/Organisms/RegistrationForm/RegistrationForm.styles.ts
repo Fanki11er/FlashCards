@@ -7,6 +7,7 @@ export const StyledRegistrationForm = styled(StyledForm)`
   width: 100%;
   background: linear-gradient(135deg, #5172bf, #4eb1d1);
   padding-left: 4rem;
+  position: relative;
 `;
 
 export const InputWrapper = styled.div`
@@ -15,4 +16,3 @@ export const InputWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
-
