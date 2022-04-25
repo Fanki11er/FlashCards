@@ -33,6 +33,7 @@ const SettingsForm = () => {
   const handleSubmit = async (values: MyFormValues) => {
     const { userName, dailyFlashCards, maximumBreak, percentNew } = values;
     if (userName === '' || dailyFlashCards < 0 || maximumBreak < 0 || percentNew < 0) {
+      navigate(main);
       return;
     }
     if (
@@ -41,6 +42,7 @@ const SettingsForm = () => {
       maximumBreak === auth.settings.maximumBreak &&
       percentNew === auth.settings.percentNew
     ) {
+      navigate(main);
       return;
     }
     try {
@@ -106,4 +108,3 @@ const SettingsForm = () => {
 export default SettingsForm;
 
 //
-
