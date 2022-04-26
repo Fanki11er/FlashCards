@@ -33,7 +33,9 @@ const MainMenu = (props: Props) => {
         ) : (
           <DisabledButton>Edytuj fiszkę</DisabledButton>
         )}
-        <Link to={settings}>Settings</Link>
+        <MainMenuButton as={Link} to={settings}>
+          Ustawienia
+        </MainMenuButton>
       </MenuButtonsWrapper>
     </MainMenuWrapper>
   );

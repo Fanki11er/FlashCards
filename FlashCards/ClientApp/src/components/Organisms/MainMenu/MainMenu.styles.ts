@@ -2,7 +2,7 @@ import styled from 'styled-components';
 
 export const MainMenuWrapper = styled.div`
   width: 100%;
-  height: 650px;
+  height: 700px;
   padding: 55px 20px;
   background: linear-gradient(135deg, #5172bf, #4eb1d1);
   border-radius: 15px;
@@ -17,5 +17,5 @@ export const MenuButtonsWrapper = styled.div`
   height: 300px;
   display: grid;
   grid-row: 2 / span 1;
-  grid-template-rows: 1fr 1fr 1fr;
+  grid-template-rows: 1fr 1fr 1fr 1fr;
 `;
