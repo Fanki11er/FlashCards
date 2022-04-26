@@ -16,5 +16,12 @@ export const ButtonsWrapper = styled.div`
   display: flex;
   justify-content: space-between;
   align-items: center;
-  padding: 0 25px;
+  padding: 15px 25px;
+`;
+
+export const StyledWrapper = styled.div`
+    display: flex;
+    justify-content: space-between;
+    width: fit-content;
+  
 `;

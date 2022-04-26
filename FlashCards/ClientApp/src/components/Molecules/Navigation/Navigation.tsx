@@ -1,8 +1,9 @@
 import Logo, { Test } from '../../Atoms/Logo/Logo';
 import { NavigationButton } from '../../Atoms/NavigationButton/NavigationButton';
-import { ButtonsWrapper, NavigationWrapper } from './Navigation.styles';
+import { ButtonsWrapper, NavigationWrapper, StyledWrapper } from './Navigation.styles';
 import routes from '../../../Routes/routes';
 import { useLocation } from 'react-router';
+import UserPicture from '../../Atoms/UserPicture/UserPicture';
 
 const Navigation = () => {
   const { login, registration, main, learn, maintenance } = routes;
@@ -13,6 +14,8 @@ const Navigation = () => {
       <Test to={'/'}>
         <Logo />
       </Test>
+      <StyledWrapper>
+      <UserPicture/>
       {pathname === '/' && (
         <ButtonsWrapper>
           <NavigationButton to={login}>Zaloguj</NavigationButton>
@@ -43,6 +46,8 @@ const Navigation = () => {
           <NavigationButton to="/">Wyloguj</NavigationButton>
         </ButtonsWrapper>
       )}
+      </StyledWrapper>
+     
     </NavigationWrapper>
   );
 };
