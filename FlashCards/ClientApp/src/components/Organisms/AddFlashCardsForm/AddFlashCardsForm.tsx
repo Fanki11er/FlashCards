@@ -5,8 +5,15 @@ import endpoints from '../../../Api/endpoints';
 import routes from '../../../Routes/routes';
 import { CancelButton, DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
-import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
-import { ButtonsWrapper, InputWrapper, NewFlashCardsInput, StyledError, StyledPerson } from './AddFlashCardsForm.styled';
+import {
+  ButtonsWrapper,
+  InputWrapper,
+  NewFlashCardsInput,
+  StyledAddFlashCardsForm,
+  StyledError,
+  StyledFormError,
+  StyledPerson,
+} from './AddFlashCardsForm.styled';
 import * as Yup from 'yup';
 import useAxiosPrivate from '../../../Hooks/useAxiosPrivate';
 import { ConnectionInfo } from '../LoginForm/LoginForm.styles';
@@ -24,6 +31,7 @@ const AddFlashCardsForm = () => {
   const navigate = useNavigate();
   const [isSending, setIsSending] = useState(false);
   const axiosPrivate = useAxiosPrivate();
+  const [isError, setError] = useState('');
   const AddingSchema = Yup.object().shape({
     frontText: Yup.string().required('Pole wymagane'),
     backText: Yup.string().required('Pole wymagane'),
@@ -31,6 +39,7 @@ const AddFlashCardsForm = () => {
 
   const handleSubmit = async (values: MyFormValues) => {
     setIsSending(true);
+    setError('');
     try {
       const { frontText, backText } = values;
       axiosPrivate.post(
@@ -51,8 +60,14 @@ const AddFlashCardsForm = () => {
         });
         setIsSending(false);
       }, 1000);
-    } catch (error) {
-      console.error(error);
+    } catch (error: any) {
+      if (!error?.response) {
+        setError('Błąd połączenia');
+      } else if (error.response?.status === 401) {
+        setError('Brak autoryzacji');
+      } else {
+        setError('Błąd połączenia');
+      }
       setIsSending(false);
     }
   };
@@ -67,7 +82,7 @@ const AddFlashCardsForm = () => {
         actions.setSubmitting(false);
       }}
     >
-      <StyledForm>
+      <StyledAddFlashCardsForm>
         <FormHeader>Dodaj nową</FormHeader>
         <InputWrapper>
           <NewFlashCardsInput name="frontText" placeholder="Przód karty" label="" />
@@ -89,7 +104,8 @@ const AddFlashCardsForm = () => {
           </ButtonsWrapper>
         )}
         <StyledPerson />
-      </StyledForm>
+        {isError ? <StyledFormError>{isError}</StyledFormError> : null}
+      </StyledAddFlashCardsForm>
     </Formik>
   );
 };

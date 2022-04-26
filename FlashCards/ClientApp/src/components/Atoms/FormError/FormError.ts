@@ -16,5 +16,19 @@ export const FormError = styled.div`
   position: absolute;
   top: -15px;
   transform-origin: 50% 50%;
+  opacity: 0;
+
+  animation-name: Show;
+  animation-duration: 0.3s;
+  animation-fill-mode: forwards;
+
+  @keyframes Show {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
 `;
 

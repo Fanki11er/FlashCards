@@ -6,7 +6,7 @@ import MainMenu from '../../components/Organisms/MainMenu/MainMenu';
 import useAxiosPrivate from '../../Hooks/useAxiosPrivate';
 import { FlashCardsStatus } from '../../Interfaces/Interfaces';
 import routes from '../../Routes/routes';
-import { MainPageWrapper } from './MainPage.styles';
+import { MainPageWrapper, StyledError } from './MainPage.styles';
 
 type LocationProps = {
   state: {
@@ -18,24 +18,30 @@ const MainPage = () => {
   const { statusEndpoint } = endpoints;
   const { login } = routes;
   const [flashCardsInfo, setFlashCardsInfo] = useState<FlashCardsStatus>();
-  console.log(flashCardsInfo);
   const navigate = useNavigate();
   const location = useLocation() as LocationProps;
   const refresh = location.state?.refresh;
-  console.log(refresh);
   const axiosPrivate = useAxiosPrivate();
+  const [isError, setError] = useState('');
   useEffect(() => {
     let isMounted = true;
     const controller = new AbortController();
 
     const getFlashCardsInfo = async () => {
+      setError('');
       try {
         const response = await axiosPrivate.get(statusEndpoint, {
           signal: controller.signal,
         });
         isMounted && setFlashCardsInfo(response.data);
-      } catch (error) {
-        console.log(error);
+      } catch (error: any) {
+        if (!error?.response) {
+          setError('Błąd połączenia');
+        } else if (error.response?.status === 401) {
+          setError('Brak autoryzacji');
+        } else {
+          setError('Błąd połączenia');
+        }
         navigate(login, {
           state: {
             from: location,
@@ -53,6 +59,7 @@ const MainPage = () => {
   }, [statusEndpoint, navigate, location, login, axiosPrivate, refresh]);
   return (
     <MainPageWrapper>
+      {isError ? <StyledError /> : null}
       <MainMenu flashCardsInfo={flashCardsInfo} />
     </MainPageWrapper>
   );

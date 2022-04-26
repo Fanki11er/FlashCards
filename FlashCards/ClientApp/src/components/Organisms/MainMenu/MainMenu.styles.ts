@@ -9,6 +9,7 @@ export const MainMenuWrapper = styled.div`
   display: grid;
   grid-template-rows: 200px 400px;
   grid-column: 2 / span 1;
+  grid-row: 2 / span 1;
   grid-row-gap: 40px;
 `;
 

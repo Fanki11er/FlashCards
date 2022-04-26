@@ -1,38 +1,31 @@
-import { StyledForm } from "../../Atoms/StyledForm/StyledForm";
-import styled from "styled-components";
-import { Field } from "formik";
-import { ThemeProps } from "../../../Theme/theme";
-import ErrorInfo from "../../Atoms/ErrorInfo/ErrorInfo";
+import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
+import styled from 'styled-components';
+import { Field } from 'formik';
+import { ThemeProps } from '../../../Theme/theme';
+import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 import { ReactComponent as Person } from '../../../Assets/Svg/Person_adding.svg';
+import { FormError } from '../../Atoms/FormError/FormError';
 
 export const StyledAddFlashCardsForm = styled(StyledForm)`
-        grid-template-rows: 150px 150px 150px 150px;
-        height: 300px;
-        width: 100%;
-        background: none red;
-        background-image: none;
-        padding: 0;
-        margin: 0;
-        position: relative;
-    
+  position: relative;
 `;
 
 export const ButtonsWrapper = styled.div`
-        display: flex;
-        align-items: center;
-        justify-content: space-between;
-        width: 550px;
-        justify-self: center;
-        margin-bottom: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 550px;
+  justify-self: center;
+  margin-bottom: 50px;
 `;
 
 export const InputWrapper = styled.div`
-        width: 100%;
-        height: 100%;
-        display: flex;
-        flex-direction: column;
-        align-items: center;
-        justify-content: space-between;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: space-between;
 `;
 
 export const NewFlashCardsInput = styled(Field)`
@@ -58,15 +51,22 @@ export const NewFlashCardsInput = styled(Field)`
 `;
 
 export const StyledError = styled(ErrorInfo)`
-        width: 100%;
-        padding: 0px 10px;
-        height: 35px;
-        transform: translateX(0);
+  width: 100%;
+  padding: 0px 10px;
+  height: 35px;
+  transform: translateX(0);
+  margin-right: 0;
 `;
 
 export const StyledPerson = styled(Person)`
-        height: 80%;
-        position: absolute;
-        bottom: -30px;
-        left: -140px;
+  height: 80%;
+  position: absolute;
+  bottom: -20px;
+  left: -205px;
+`;
+
+export const StyledFormError = styled(FormError)`
+  top: -80px;
+  min-width: 120%;
+  transform: translateX(-65px);
 `;
