@@ -9,11 +9,7 @@ import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormError } from '../../Atoms/FormError/FormError';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import FormInput from '../../Molecules/FormInput/FormInput';
-<<<<<<< HEAD
-import { LoginPerson, StyledLoginForm } from './LoginForm.styles';
-=======
-import { ConnectionInfo, StyledLoginForm } from './LoginForm.styles';
->>>>>>> @{-1}
+import { LoginPerson, StyledLoginForm, ConnectionInfo } from './LoginForm.styles';
 
 interface MyFormValues {
   email: string;
@@ -74,13 +70,9 @@ const LoginForm = () => {
         <FormHeader>Logowanie</FormHeader>
         <FormInput name="email" placeholder="Email" label="Email" type="email" />
         <FormInput name="password" placeholder="Hasło" label="Hasło" type="password" />
-<<<<<<< HEAD
-        <DefaultButton type="submit">Zaloguj</DefaultButton>
-        <LoginPerson/>
-=======
         {isConnecting ? <ConnectionInfo /> : <DefaultButton type="submit">{isError ? 'Spróbuj ponownie' : 'Zaloguj'}</DefaultButton>}
         {isError ? <FormError>{isError}</FormError> : null}
->>>>>>> @{-1}
+        <LoginPerson />
       </StyledLoginForm>
     </Formik>
   );

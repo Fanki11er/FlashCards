@@ -102,13 +102,9 @@ const RegistrationForm = () => {
           <ErrorMessage name="confirmPassword" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
         </InputWrapper>
 
-<<<<<<< HEAD
-        <DefaultButton type="submit">Rejestruj</DefaultButton>
-        <RegistrationPerson/>
-=======
         {isConnecting ? <ConnectionInfo /> : <DefaultButton type="submit">{isError ? 'Spróbuj ponownie' : 'Zarejestruj'}</DefaultButton>}
         {isError ? <FormError>{isError}</FormError> : null}
->>>>>>> @{-1}
+        <RegistrationPerson />
       </StyledRegistrationForm>
     </Formik>
   );
