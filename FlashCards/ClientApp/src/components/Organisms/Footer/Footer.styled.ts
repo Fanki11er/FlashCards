@@ -30,4 +30,5 @@ export const InfoText = styled.span`
         display: flex;
         align-items: center;
         justify-content: center;
+        user-select: none;
 `;

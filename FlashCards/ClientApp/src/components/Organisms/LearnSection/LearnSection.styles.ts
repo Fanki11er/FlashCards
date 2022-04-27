@@ -50,6 +50,7 @@ export const StyledSpan = styled.span`
   border-radius: 10px;
   justify-self: center;
   background-color: ${(props: ThemeProps) => props.theme.colors.inputBlue};
+  user-select: none;
 `;
 
 export const StyledHut = styled(Hut)`

@@ -17,6 +17,7 @@ export const NavigationButton = styled(Link)`
   text-decoration: none;
   align-items: center;
   justify-content: center;
+  user-select: none;
   :visited {
     color: ${({ theme }) => theme.colors.darkPurple};
   }

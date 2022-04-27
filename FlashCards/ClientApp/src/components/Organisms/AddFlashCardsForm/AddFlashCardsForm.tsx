@@ -60,11 +60,11 @@ const AddFlashCardsForm = () => {
       <StyledForm>
         <FormHeader>Dodaj nową</FormHeader>
         <InputWrapper>
-          <NewFlashCardsInput name="frontText" placeholder="Przód karty" label="" />
+          <NewFlashCardsInput name="frontText" placeholder="Przód karty" label="" autocomplete="off" />
           <ErrorMessage name="frontText" render={(msg) => <StyledError>{msg}</StyledError>} />
         </InputWrapper>
         <InputWrapper>
-          <NewFlashCardsInput name="backText" placeholder="Tył karty" label="" />
+          <NewFlashCardsInput name="backText" placeholder="Tył karty" label="" autocomplete="off"/>
           <ErrorMessage name="backText" render={(msg) => <StyledError>{msg}</StyledError>} />
         </InputWrapper>
 

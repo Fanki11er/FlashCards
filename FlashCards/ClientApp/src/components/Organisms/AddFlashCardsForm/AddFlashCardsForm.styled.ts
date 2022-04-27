@@ -14,7 +14,6 @@ export const StyledAddFlashCardsForm = styled(StyledForm)`
         padding: 0;
         margin: 0;
         position: relative;
-    
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -33,6 +32,7 @@ export const InputWrapper = styled.div`
         flex-direction: column;
         align-items: center;
         justify-content: space-between;
+     
 `;
 
 export const NewFlashCardsInput = styled(Field)`
