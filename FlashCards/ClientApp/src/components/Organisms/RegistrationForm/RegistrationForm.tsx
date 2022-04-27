@@ -7,6 +7,11 @@ import * as Yup from 'yup';
 import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 import axios from '../../../Api/axios';
 import endpoints from '../../../Api/endpoints';
+import { useState } from 'react';
+import { FormError } from '../../Atoms/FormError/FormError';
+import { ConnectionInfo } from '../LoginForm/LoginForm.styles';
+import { useNavigate } from 'react-router';
+import routes from '../../../Routes/routes';
 
 interface MyFormValues {
   name: string;
@@ -37,20 +42,33 @@ const RegistrationSchema = Yup.object().shape({
 });
 
 const RegistrationForm = () => {
+  const { main } = routes;
+  const [isConnecting, setIsConnecting] = useState(false);
+  const [isError, setError] = useState('');
+  const navigate = useNavigate();
+
   const initialValues: MyFormValues = { name: '', password: '', email: '', confirmPassword: '' };
   const { registerEndpoint } = endpoints;
 
   const handleSubmit = async (userCredentials: UserRegistrationCredentials) => {
+    setIsConnecting(true);
+    setError('');
     try {
-      const response = await axios.post(registerEndpoint, JSON.stringify(userCredentials), {
+      await axios.post(registerEndpoint, JSON.stringify(userCredentials), {
         headers: { 'Content-Type': 'application/json' },
         withCredentials: true,
       });
-      console.log(response.data);
-      console.log(JSON.stringify(response));
-      console.log(response.data.accessToken);
-    } catch (error) {
-      console.error(error);
+      setIsConnecting(false);
+      navigate(main);
+    } catch (error: any) {
+      setIsConnecting(false);
+      if (!error?.response) {
+        setError('Błąd połączenia');
+      } else if (error.response?.status === 409) {
+        setError('Taki email już istnieje');
+      } else {
+        setError('Błąd rejestracji');
+      }
     }
   };
   return (
@@ -84,8 +102,13 @@ const RegistrationForm = () => {
           <ErrorMessage name="confirmPassword" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
         </InputWrapper>
 
+<<<<<<< HEAD
         <DefaultButton type="submit">Rejestruj</DefaultButton>
         <RegistrationPerson/>
+=======
+        {isConnecting ? <ConnectionInfo /> : <DefaultButton type="submit">{isError ? 'Spróbuj ponownie' : 'Zarejestruj'}</DefaultButton>}
+        {isError ? <FormError>{isError}</FormError> : null}
+>>>>>>> @{-1}
       </StyledRegistrationForm>
     </Formik>
   );

@@ -17,6 +17,7 @@ export const InputWrapper = styled.div`
   width: 100%;
   height: 100%;
 `;
+<<<<<<< HEAD
 
 
 export const RegistrationPerson = styled(Registration)`
@@ -25,3 +26,5 @@ export const RegistrationPerson = styled(Registration)`
         bottom: 0;
 
 `;
+=======
+>>>>>>> @{-1}

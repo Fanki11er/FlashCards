@@ -2,12 +2,14 @@ import { Formik } from 'formik';
 import { SmallerCancelButton, SmallerEditButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import useAuth from '../../../Hooks/useAuth';
-import { ButtonsWrapper, Label, LongInputWrapper, ShortInputWrapper, StyledInput, StyledSettingsForm } from './SettingsForm.styles';
+import { ButtonsWrapper, Label, LongInputWrapper, ShortInputWrapper, StyledFormError, StyledInput, StyledSettingsForm } from './SettingsForm.styles';
 import useAxiosPrivate from '../../../Hooks/useAxiosPrivate';
 import endpoints from '../../../Api/endpoints';
 import { useNavigate } from 'react-router';
 import routes from '../../../Routes/routes';
 import { AuthUser } from '../../../Interfaces/Interfaces';
+import { useState } from 'react';
+import { ConnectionInfo } from '../LoginForm/LoginForm.styles';
 
 interface MyFormValues {
   userName: string;
@@ -22,6 +24,8 @@ const SettingsForm = () => {
   const { settingsEndpoint } = endpoints;
   const { main } = routes;
   const navigate = useNavigate();
+  const [isError, setError] = useState('');
+  const [isSending, setIsSending] = useState(false);
 
   const initialValues: MyFormValues = {
     userName: auth?.name ? auth?.name : '',
@@ -31,8 +35,10 @@ const SettingsForm = () => {
   };
 
   const handleSubmit = async (values: MyFormValues) => {
+    setError('');
     const { userName, dailyFlashCards, maximumBreak, percentNew } = values;
     if (userName === '' || dailyFlashCards < 0 || maximumBreak < 0 || percentNew < 0) {
+      navigate(main);
       return;
     }
     if (
@@ -41,8 +47,10 @@ const SettingsForm = () => {
       maximumBreak === auth.settings.maximumBreak &&
       percentNew === auth.settings.percentNew
     ) {
+      navigate(main);
       return;
     }
+    setIsSending(true);
     try {
       const response = await axiosPrivate.post(
         settingsEndpoint,
@@ -57,11 +65,18 @@ const SettingsForm = () => {
           withCredentials: true,
         },
       );
-      console.log(response);
       response && setAuth(response?.data as AuthUser);
-      navigate(main);
-    } catch (error) {
-      console.error(error);
+      setIsSending(false);
+      //navigate(main);
+    } catch (error: any) {
+      setIsSending(false);
+      if (!error?.response) {
+        setError('Błąd połączenia');
+      } else if (error.response?.status === 401) {
+        setError('Brak autoryzacji');
+      } else {
+        setError('Błąd');
+      }
     }
   };
 
@@ -69,7 +84,6 @@ const SettingsForm = () => {
     <Formik
       initialValues={initialValues}
       onSubmit={(values, actions) => {
-        console.log('SUBMIT');
         handleSubmit(values);
         actions.setSubmitting(false);
         actions.resetForm();
@@ -93,11 +107,16 @@ const SettingsForm = () => {
           <Label>Procent nowych</Label>
           <StyledInput name={'percentNew'} type="number" />
         </ShortInputWrapper>
+        {isSending ? (
+          <ConnectionInfo />
+        ) : (
+          <ButtonsWrapper>
+            <SmallerEditButton type={'submit'}>Edytuj</SmallerEditButton>
+            <SmallerCancelButton onClick={() => navigate(main)}>Anuluj</SmallerCancelButton>
+          </ButtonsWrapper>
+        )}
 
-        <ButtonsWrapper>
-          <SmallerEditButton type={'submit'}>Edytuj</SmallerEditButton>
-          <SmallerCancelButton onClick={() => navigate(main)}>Anuluj</SmallerCancelButton>
-        </ButtonsWrapper>
+        {isError ? <StyledFormError>{isError}</StyledFormError> : null}
       </StyledSettingsForm>
     </Formik>
   );
@@ -106,4 +125,3 @@ const SettingsForm = () => {
 export default SettingsForm;
 
 //
-

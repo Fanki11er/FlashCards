@@ -1,6 +1,7 @@
 import { Field, Form } from 'formik';
 import styled from 'styled-components';
 import { ThemeProps } from '../../../Theme/theme';
+import { FormError } from '../../Atoms/FormError/FormError';
 
 export const StyledSettingsForm = styled(Form)`
   width: 100%;
@@ -9,6 +10,7 @@ export const StyledSettingsForm = styled(Form)`
   flex-direction: column;
   align-items: center;
   justify-content: space-around;
+  position: relative;
 `;
 
 export const StyledInput = styled(Field)`
@@ -65,3 +67,7 @@ export const ButtonsWrapper = styled.div`
   margin-top: 30px;
 `;
 
+export const StyledFormError = styled(FormError)`
+  top: -95px;
+  min-width: 120%;
+`;

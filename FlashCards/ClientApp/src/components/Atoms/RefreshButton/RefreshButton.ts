@@ -8,7 +8,7 @@ export const RefreshButton = styled(Refresh)`
   transition: all 0.5s;
   border-radius: 100%;
   :hover {
-    transform: scale(120%);
+    transform: scale(120%) rotate(-180deg);
     border: 2px solid ${(props: ThemeProps) => props.theme.colors.orange};
   }
 `;

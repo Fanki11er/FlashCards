@@ -11,8 +11,12 @@ const GlobalStyle = createGlobalStyle`
 html{
     font-size:62.5% ;
     //width: 100% ;
+<<<<<<< HEAD
    // min-height: 100vh;
    // height: fit-content;
+=======
+    //min-height: 100vh;
+>>>>>>> @{-1}
 }
 body {
     font-size:1.6rem ;
@@ -20,7 +24,10 @@ body {
     padding:0 ;
     //width:100% ;
     //min-height: 100vh ;
+<<<<<<< HEAD
     //height: 120vh;
+=======
+>>>>>>> @{-1}
     
     ::-webkit-scrollbar{
         width: 20px;

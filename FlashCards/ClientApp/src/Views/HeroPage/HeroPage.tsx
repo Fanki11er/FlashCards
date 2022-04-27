@@ -1,8 +1,13 @@
+import { HeroPageWrapper, StyledFlashCard, StyledMainPerson, Wrapper } from './HeroPageWrapper.styles';
+
 const HeroPage = () => {
   return (
-    <>
-      <h1>This will be Hero page</h1>
-    </>
+    <HeroPageWrapper>
+      <Wrapper>
+        <StyledFlashCard />
+        <StyledMainPerson />
+      </Wrapper>
+    </HeroPageWrapper>
   );
 };
 
