@@ -9,7 +9,7 @@ import { AuthUser } from '../../../Interfaces/Interfaces';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import FormInput from '../../Molecules/FormInput/FormInput';
-import { StyledLoginForm } from './LoginForm.styles';
+import { LoginPerson, StyledLoginForm } from './LoginForm.styles';
 
 interface MyFormValues {
   email: string;
@@ -70,6 +70,7 @@ const LoginForm = () => {
         <FormInput name="email" placeholder="Email" label="Email" type="email" />
         <FormInput name="password" placeholder="Hasło" label="Hasło" type="password" />
         <DefaultButton type="submit">Zaloguj</DefaultButton>
+        <LoginPerson/>
       </StyledLoginForm>
     </Formik>
   );

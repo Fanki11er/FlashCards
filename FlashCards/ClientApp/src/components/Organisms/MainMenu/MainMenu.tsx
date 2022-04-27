@@ -3,7 +3,7 @@ import { FlashCardsStatus } from '../../../Interfaces/Interfaces';
 import routes from '../../../Routes/routes';
 import { DisabledButton, MainMenuButton } from '../../Atoms/Buttons/Buttons';
 import FlashCardsInfo from '../../Molecules/FlashCardsInfo/FlashCardsInfo';
-import { MainMenuWrapper, MenuButtonsWrapper } from './MainMenu.styles';
+import { MainMenuWrapper, MenuButtonsWrapper, MenuPerson } from './MainMenu.styles';
 
 interface Props {
   flashCardsInfo: FlashCardsStatus | undefined;
@@ -35,6 +35,7 @@ const MainMenu = (props: Props) => {
         )}
         <Link to={settings}>Settings</Link>
       </MenuButtonsWrapper>
+      <MenuPerson/>
     </MainMenuWrapper>
   );
 };

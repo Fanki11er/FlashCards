@@ -2,7 +2,7 @@ import { Formik, ErrorMessage } from 'formik';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import FormInput from '../../Molecules/FormInput/FormInput';
-import { InputWrapper, StyledRegistrationForm } from './RegistrationForm.styles';
+import { InputWrapper, RegistrationPerson, StyledRegistrationForm } from './RegistrationForm.styles';
 import * as Yup from 'yup';
 import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 import axios from '../../../Api/axios';
@@ -85,6 +85,7 @@ const RegistrationForm = () => {
         </InputWrapper>
 
         <DefaultButton type="submit">Rejestruj</DefaultButton>
+        <RegistrationPerson/>
       </StyledRegistrationForm>
     </Formik>
   );
