@@ -106,10 +106,10 @@ const EditFlashCardsForm = (props: Props) => {
         ) : (
           <>
             <InputWrapper>
-              <EditFlashCardsInput name="frontText" placeholder="Przód karty" label="" />
+              <EditFlashCardsInput name="frontText" placeholder="Przód karty" label="" autocomplete="off" />
             </InputWrapper>
             <InputWrapper>
-              <EditFlashCardsInput name="backText" placeholder="Tył karty" label="" />
+              <EditFlashCardsInput name="backText" placeholder="Tył karty" label="" autocomplete="off"/>
             </InputWrapper>
             <ButtonsWrapper>
               <DefaultButton type="submit">Edytuj</DefaultButton>

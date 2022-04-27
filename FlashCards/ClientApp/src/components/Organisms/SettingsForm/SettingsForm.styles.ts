@@ -11,6 +11,7 @@ export const StyledSettingsForm = styled(Form)`
   align-items: center;
   justify-content: space-around;
   position: relative;
+  user-select: none;
 `;
 
 export const StyledInput = styled(Field)`

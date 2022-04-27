@@ -7,13 +7,6 @@ import { ReactComponent as Person } from '../../../Assets/Svg/Person_adding.svg'
 import { FormError } from '../../Atoms/FormError/FormError';
 
 export const StyledAddFlashCardsForm = styled(StyledForm)`
-        grid-template-rows: 150px 150px 150px 150px;
-        height: 300px;
-        width: 100%;
-        background: none red;
-        background-image: none;
-        padding: 0;
-        margin: 0;
         position: relative;
 `;
 

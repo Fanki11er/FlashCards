@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
-import { ReactComponent as Registration } from '../../../Assets/Svg/RegistrationPerson.svg';
+import { ReactComponent as Registration} from '../../../Assets/Svg/RegistrationPerson.svg';
+import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 
 export const StyledRegistrationForm = styled(StyledForm)`
   grid-template-rows: 1fr 0.5fr 0.5fr 0.5fr 0.5fr 1fr;
@@ -20,8 +21,15 @@ export const InputWrapper = styled.div`
  
 `;
 
+
 export const RegistrationPerson = styled(Registration)`
-  position: absolute;
-  right: -165px;
-  bottom: 0;
+        position: absolute;
+        right: -165px;
+        bottom: 0;
+
+`;
+
+export const ErrorInput = styled(ErrorInfo)`
+      min-width: 42%;
+      
 `;

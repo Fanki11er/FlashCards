@@ -2,7 +2,7 @@ import { Formik, ErrorMessage } from 'formik';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import FormInput from '../../Molecules/FormInput/FormInput';
-import { InputWrapper, RegistrationPerson, StyledRegistrationForm } from './RegistrationForm.styles';
+import { ErrorInput, InputWrapper, RegistrationPerson, StyledRegistrationForm } from './RegistrationForm.styles';
 import * as Yup from 'yup';
 import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 import axios from '../../../Api/axios';
@@ -87,19 +87,19 @@ const RegistrationForm = () => {
         <FormHeader>Rejestracja</FormHeader>
         <InputWrapper>
           <FormInput name="name" placeholder="Name" label="Login*" />
-          <ErrorMessage name="name" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
+          <ErrorMessage name="name" render={(msg) => <ErrorInput>{msg}</ErrorInput>} />
         </InputWrapper>
         <InputWrapper>
           <FormInput name="email" placeholder="Email" label="Email*" type="email" />
-          <ErrorMessage name="email" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
+          <ErrorMessage name="email" render={(msg) => <ErrorInput>{msg}</ErrorInput>} />
         </InputWrapper>
         <InputWrapper>
           <FormInput name="password" placeholder="Hasło" label="Hasło*" type="password" />
-          <ErrorMessage name="password" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
+          <ErrorMessage name="password" render={(msg) => <ErrorInput>{msg}</ErrorInput>} />
         </InputWrapper>
         <InputWrapper>
           <FormInput name="confirmPassword" placeholder="Powtórz Hasło" label="Powtórz Hasło*" type="password" />
-          <ErrorMessage name="confirmPassword" render={(msg) => <ErrorInfo>{msg}</ErrorInfo>} />
+          <ErrorMessage name="confirmPassword" render={(msg) => <ErrorInput>{msg}</ErrorInput>} />
         </InputWrapper>
 
         {isConnecting ? <ConnectionInfo /> : <DefaultButton type="submit">{isError ? 'Spróbuj ponownie' : 'Zarejestruj'}</DefaultButton>}

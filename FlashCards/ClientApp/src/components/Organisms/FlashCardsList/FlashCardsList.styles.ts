@@ -12,6 +12,7 @@ export const FlashCardsListWrapper = styled.ul`
     flex-direction: column;
     align-items: center;
     overflow-y: scroll;
+    user-select: none;
 
     ::-webkit-scrollbar{
         width: 15px;
