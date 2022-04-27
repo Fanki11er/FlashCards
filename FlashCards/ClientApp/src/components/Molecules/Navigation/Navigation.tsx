@@ -7,10 +7,9 @@ import UserPicture from '../../Atoms/UserPicture/UserPicture';
 import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
+  const { login, registration, main, learn, maintenance, settings } = routes;
 
-  const { login, registration, main, learn, maintenance } = routes;
-
-  const {auth} = useAuth();
+  const { auth, setAuth } = useAuth();
 
   const { pathname } = useLocation();
   return (
@@ -19,39 +18,47 @@ const Navigation = () => {
         <Logo />
       </Test>
       <StyledWrapper>
-      { auth?.name?<UserPicture userName={auth.name}/>:null}
-      {pathname === '/' && (
-        <ButtonsWrapper>
-          <NavigationButton to={login}>Zaloguj</NavigationButton>
-          <NavigationButton to={registration}>Rejestracja</NavigationButton>
-        </ButtonsWrapper>
-      )}
-      {pathname === registration && (
-        <ButtonsWrapper>
-          <NavigationButton to={login}>Zaloguj</NavigationButton>
-          <NavigationButton to="/">Powrót</NavigationButton>
-        </ButtonsWrapper>
-      )}
-      {pathname === login && (
-        <ButtonsWrapper>
-          <NavigationButton to={registration}>Rejestracja</NavigationButton>
-          <NavigationButton to="/">Powrót</NavigationButton>
-        </ButtonsWrapper>
-      )}
-      {(pathname === learn || pathname === maintenance) && (
-        <ButtonsWrapper>
-          <NavigationButton to="/">Wyloguj</NavigationButton>
-          <NavigationButton to={main}>Menu</NavigationButton>
-        </ButtonsWrapper>
-      )}
+        {auth?.name && auth?.accessToken ? <UserPicture userName={auth.name} /> : null}
+        {pathname === '/' && (
+          <ButtonsWrapper>
+            {auth?.accessToken && (
+              <NavigationButton to="/" onClick={() => setAuth(undefined)}>
+                Wyloguj
+              </NavigationButton>
+            )}
+            <NavigationButton to={login}>Zaloguj</NavigationButton>
+            <NavigationButton to={registration}>Rejestracja</NavigationButton>
+          </ButtonsWrapper>
+        )}
+        {pathname === registration && (
+          <ButtonsWrapper>
+            <NavigationButton to={login}>Zaloguj</NavigationButton>
+            <NavigationButton to="/">Powrót</NavigationButton>
+          </ButtonsWrapper>
+        )}
+        {pathname === login && (
+          <ButtonsWrapper>
+            <NavigationButton to={registration}>Rejestracja</NavigationButton>
+            <NavigationButton to="/">Powrót</NavigationButton>
+          </ButtonsWrapper>
+        )}
+        {(pathname === learn || pathname === maintenance || pathname === settings) && (
+          <ButtonsWrapper>
+            <NavigationButton to="/" onClick={() => setAuth(undefined)}>
+              Wyloguj
+            </NavigationButton>
+            <NavigationButton to={main}>Menu</NavigationButton>
+          </ButtonsWrapper>
+        )}
 
-      {(pathname === main) && (
-        <ButtonsWrapper>
-          <NavigationButton to="/">Wyloguj</NavigationButton>
-        </ButtonsWrapper>
-      )}
+        {pathname === main && (
+          <ButtonsWrapper>
+            <NavigationButton to="/" onClick={() => setAuth(undefined)}>
+              Wyloguj
+            </NavigationButton>
+          </ButtonsWrapper>
+        )}
       </StyledWrapper>
-     
     </NavigationWrapper>
   );
 };

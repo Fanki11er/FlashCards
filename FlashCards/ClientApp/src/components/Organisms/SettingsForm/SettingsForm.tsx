@@ -67,7 +67,7 @@ const SettingsForm = () => {
       );
       response && setAuth(response?.data as AuthUser);
       setIsSending(false);
-      //navigate(main);
+      navigate(main);
     } catch (error: any) {
       setIsSending(false);
       if (!error?.response) {

@@ -5,7 +5,7 @@ interface Props {
   children: React.ReactChild;
 }
 interface AuthContextInterface {
-  setAuth: React.Dispatch<React.SetStateAction<AuthUser>>;
+  setAuth: React.Dispatch<React.SetStateAction<AuthUser | undefined>>;
   auth: AuthUser | undefined;
 }
 
@@ -25,7 +25,7 @@ export const AuthContext = createContext<AuthContextInterface>({
 
 const AuthProvider = (props: Props) => {
   const { children } = props;
-  const [auth, setAuth] = useState<AuthUser>({
+  const [auth, setAuth] = useState<AuthUser | undefined>({
     id: 0,
     name: '',
     settings: {
