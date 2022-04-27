@@ -12,6 +12,7 @@ export const AddFlashCardsSectionWrapper = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: space-between;
+    user-select: none;
 `;
 
 export const FormWrapper = styled.div`

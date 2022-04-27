@@ -33,5 +33,6 @@ export const UserName = styled.span`
         align-items: center;
         color: #DF6C4F;
         font-weight: bold;
+        user-select: none;
 
 `;

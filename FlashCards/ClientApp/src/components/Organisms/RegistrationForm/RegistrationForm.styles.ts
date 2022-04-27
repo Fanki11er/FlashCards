@@ -9,6 +9,7 @@ export const StyledRegistrationForm = styled(StyledForm)`
   background: linear-gradient(135deg, #5172bf, #4eb1d1);
   padding-left: 4rem;
   position: relative;
+  user-select: none;
 `;
 
 export const InputWrapper = styled.div`
@@ -16,6 +17,7 @@ export const InputWrapper = styled.div`
   grid-template-rows: 0.7fr 0.3fr;
   width: 100%;
   height: 100%;
+ 
 `;
 
 export const RegistrationPerson = styled(Registration)`

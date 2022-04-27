@@ -11,7 +11,7 @@ const Navigation = () => {
   const { login, registration, main, learn, maintenance } = routes;
 
   const {auth} = useAuth();
-
+  
   const { pathname } = useLocation();
   return (
     <NavigationWrapper>

@@ -6,6 +6,7 @@ import { Link } from 'react-router-dom';
 const StyledLogo = styled(Logo)`
   height: 150px;
   margin: 25px 0 0 25px;
+  user-select: none;
 `;
 
 export default StyledLogo;

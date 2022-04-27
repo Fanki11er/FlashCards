@@ -12,7 +12,7 @@ export const EditFlashCardSectionWrapper = styled.div`
     display: flex;
     align-items: center;
     justify-content: center;
-   
+    
 `;
 
 export const EditPerson = styled(Edit)`

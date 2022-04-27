@@ -4,9 +4,10 @@ import { ReactComponent as Login } from '../../../Assets/Svg/LoginPerson.svg';
 import { ReactComponent as Earth } from '../../../Assets/Svg/Earth.svg';
 
 export const StyledLoginForm = styled(StyledForm)`
-  background: linear-gradient(135deg, #5172bf, #4eb1d1);
-  padding-left: 4rem;
-  position: relative;
+        background: linear-gradient(135deg, #5172bf, #4eb1d1);
+        padding-left: 4rem;
+        position: relative;
+        user-select: none;
 `;
 
 export const LoginPerson = styled(Login)`

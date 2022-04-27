@@ -11,6 +11,7 @@ export const StyledLearnAnswerForm = styled(StyledForm)`
   width: 100%;
   background: transparent;
   padding: 0;
+  user-select: none;
 `;
 
 export const AnswerInput = styled(DefaultField)`
