@@ -15,6 +15,7 @@ export const StyledEditFlashCardsForm = styled(StyledForm)`
   margin: 0;
   position: relative;
   align-self: center;
+  user-select: none;
 `;
 
 export const ButtonsWrapper = styled.div`
