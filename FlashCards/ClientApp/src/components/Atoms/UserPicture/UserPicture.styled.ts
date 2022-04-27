@@ -8,10 +8,8 @@ export const UserPictureWrapper = styled.div`
         flex-direction: column;
         justify-content: center;
         align-items: center;
-        //width: 300px;
-       // height: 40px;
-       justify-self: flex-start;
-       margin-top: -40px;
+        justify-self: flex-start;
+        margin-top: -40px;
 
 `;
 

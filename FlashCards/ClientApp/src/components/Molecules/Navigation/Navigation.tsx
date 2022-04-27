@@ -4,9 +4,13 @@ import { ButtonsWrapper, NavigationWrapper, StyledWrapper } from './Navigation.s
 import routes from '../../../Routes/routes';
 import { useLocation } from 'react-router';
 import UserPicture from '../../Atoms/UserPicture/UserPicture';
+import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
+
   const { login, registration, main, learn, maintenance } = routes;
+
+  const {auth} = useAuth();
 
   const { pathname } = useLocation();
   return (
@@ -15,7 +19,7 @@ const Navigation = () => {
         <Logo />
       </Test>
       <StyledWrapper>
-      <UserPicture/>
+      { auth?.name?<UserPicture userName={auth.name}/>:null}
       {pathname === '/' && (
         <ButtonsWrapper>
           <NavigationButton to={login}>Zaloguj</NavigationButton>
