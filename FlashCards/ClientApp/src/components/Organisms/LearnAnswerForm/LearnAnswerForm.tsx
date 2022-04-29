@@ -1,4 +1,5 @@
 import { Formik } from 'formik';
+import useAutoFocus from '../../../Hooks/useAutoFocus';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { AnswerInput, StyledLearnAnswerForm } from './LearnAnswerForm.styles';
 
@@ -25,7 +26,7 @@ const LearnAnswerForm = (props: Props) => {
       }}
     >
       <StyledLearnAnswerForm>
-        <AnswerInput name="answer" placeholder="Answer" autocomplete="off" />
+        <AnswerInput name="answer" placeholder="Answer" autocomplete="off" autoFocus={true} />
         <DefaultButton className={!flashCards ? 'disable' : ''} type="submit" disabled={!flashCards ? true : false}>
           Sprawdź
         </DefaultButton>
@@ -35,4 +36,3 @@ const LearnAnswerForm = (props: Props) => {
 };
 
 export default LearnAnswerForm;
-

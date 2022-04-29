@@ -4,6 +4,7 @@ import { useNavigate } from 'react-router';
 import axios from '../../../Api/axios';
 import endpoints from '../../../Api/endpoints';
 import useAuth from '../../../Hooks/useAuth';
+import useAutoFocus from '../../../Hooks/useAutoFocus';
 import { AuthUser } from '../../../Interfaces/Interfaces';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { FormError } from '../../Atoms/FormError/FormError';
@@ -23,6 +24,7 @@ const LoginForm = () => {
   const [isError, setError] = useState('');
   const { setAuth } = useAuth();
   const navigate = useNavigate();
+  const emailInput = useAutoFocus();
 
   const handleSubmit = async (values: MyFormValues) => {
     setIsConnecting(true);
@@ -68,7 +70,7 @@ const LoginForm = () => {
     >
       <StyledLoginForm>
         <FormHeader>Logowanie</FormHeader>
-        <FormInput name="email" placeholder="Email" label="Email" type="email" />
+        <FormInput name="email" placeholder="Email" label="Email" type="email" inputRef={emailInput} />
         <FormInput name="password" placeholder="Hasło" label="Hasło" type="password" />
         {isConnecting ? <ConnectionInfo /> : <DefaultButton type="submit">{isError ? 'Spróbuj ponownie' : 'Zaloguj'}</DefaultButton>}
         {isError ? <FormError>{isError}</FormError> : null}

@@ -93,7 +93,7 @@ const SettingsForm = () => {
         <FormHeader>Ustawienia</FormHeader>
         <LongInputWrapper>
           <Label>Nazwa użytkownika</Label>
-          <StyledInput name="userName" />
+          <StyledInput name="userName" autoFocus={true} />
         </LongInputWrapper>
         <ShortInputWrapper>
           <Label>Ile fishek dziennie</Label>

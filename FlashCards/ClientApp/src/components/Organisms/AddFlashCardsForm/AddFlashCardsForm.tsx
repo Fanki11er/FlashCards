@@ -32,6 +32,7 @@ const AddFlashCardsForm = () => {
   const [isSending, setIsSending] = useState(false);
   const axiosPrivate = useAxiosPrivate();
   const [isError, setError] = useState('');
+
   const AddingSchema = Yup.object().shape({
     frontText: Yup.string().required('Pole wymagane'),
     backText: Yup.string().required('Pole wymagane'),
@@ -85,11 +86,11 @@ const AddFlashCardsForm = () => {
       <StyledAddFlashCardsForm>
         <FormHeader>Dodaj nową</FormHeader>
         <InputWrapper>
-          <NewFlashCardsInput name="frontText" placeholder="Przód karty" label="" autocomplete="off" />
+          <NewFlashCardsInput name="frontText" placeholder="Przód karty" label="" autocomplete="off" autoFocus={true} />
           <ErrorMessage name="frontText" render={(msg) => <StyledError>{msg}</StyledError>} />
         </InputWrapper>
         <InputWrapper>
-          <NewFlashCardsInput name="backText" placeholder="Tył karty" label="" autocomplete="off"/>
+          <NewFlashCardsInput name="backText" placeholder="Tył karty" label="" autocomplete="off" />
           <ErrorMessage name="backText" render={(msg) => <StyledError>{msg}</StyledError>} />
         </InputWrapper>
 

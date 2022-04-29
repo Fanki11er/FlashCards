@@ -6,6 +6,7 @@ interface InputProps {
   label: string;
   placeholder: string;
   type?: string;
+  inputRef?: React.RefObject<HTMLInputElement>;
 }
 
 const FormInput = (props: InputProps) => {
@@ -13,7 +14,7 @@ const FormInput = (props: InputProps) => {
   return (
     <FormInputWrapper>
       <Label>{label}</Label>
-      <DefaultField name={name} placeholder={placeholder} type={type ? type : 'text'} />
+      <DefaultField name={name} placeholder={placeholder} type={type ? type : 'text'} innerRef={props.inputRef} />
     </FormInputWrapper>
   );
 };
