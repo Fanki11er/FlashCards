@@ -58,7 +58,7 @@ export const StyledHut = styled(Hut)`
   height: 120px;
   position: absolute;
   top: -80px;
-  right: -35px;
+  left: -35px;
 `;
 
 export const ResultWrapper = styled.div`
@@ -88,4 +88,3 @@ export const StyledTextField = styled(TextField)`
   border: 3px solid ${(props: ThemeProps & FieldProps) => (props.correct ? props.theme.colors.buttonGreen : props.theme.colors.errorRed)};
   align-items: center;
 `;
-

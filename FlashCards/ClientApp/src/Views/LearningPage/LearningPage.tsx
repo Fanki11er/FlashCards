@@ -14,7 +14,6 @@ const LearningPage = () => {
   const { learnEndpoint, updateLearnedFlashCardEndpoint } = endpoints;
   const { login } = routes;
   const [flashCardsToLearn, setFlashCardsToLearn] = useState<FlashCard[]>([]);
-  const [isUpdating, setIsUpdating] = useState<boolean>();
   const [isLoading, setIsLoading] = useState(true);
   const [isError, setError] = useState('');
   const navigate = useNavigate();
@@ -37,15 +36,14 @@ const LearningPage = () => {
         setIsLoading(false);
         console.log(response.data);
       } catch (error: any) {
+        if (!error?.response) {
+          setError('Błąd połączenia');
+        } else if (error.response?.status === 401) {
+          setError('Brak autoryzacji');
+        } else {
+          setError('Błąd pobierania');
+        }
         setIsLoading(false);
-        setError(error.message);
-        console.log(error.message);
-        /*navigate(login, {
-          state: {
-            from: location,
-          },
-          replace: true,
-        });*/
       }
     };
 
@@ -57,18 +55,18 @@ const LearningPage = () => {
   }, [navigate, location, login, axiosPrivate, learnEndpoint, refresh]);
 
   const updateFlashCard = async (flashCard: FlashCard) => {
-    setIsUpdating(true);
-    console.log(isUpdating);
-
     try {
-      const response = await axiosPrivate.post(updateLearnedFlashCardEndpoint, JSON.stringify(flashCard), {
+      await axiosPrivate.post(updateLearnedFlashCardEndpoint, JSON.stringify(flashCard), {
         headers: { 'Content-Type': 'application/json' },
       });
-      setIsUpdating(false);
-      console.log(response.data);
-    } catch (error) {
-      console.log(error);
-      setIsUpdating(false);
+    } catch (error: any) {
+      if (!error?.response) {
+        setError('Błąd połączenia');
+      } else if (error.response?.status === 401) {
+        setError('Brak autoryzacji');
+      } else {
+        setError('Błąd aktualizacji');
+      }
     }
   };
 

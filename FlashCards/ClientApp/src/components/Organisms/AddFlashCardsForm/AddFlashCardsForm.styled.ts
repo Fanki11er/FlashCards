@@ -7,7 +7,7 @@ import { ReactComponent as Person } from '../../../Assets/Svg/Person_adding.svg'
 import { FormError } from '../../Atoms/FormError/FormError';
 
 export const StyledAddFlashCardsForm = styled(StyledForm)`
-        position: relative;
+  position: relative;
 `;
 
 export const ButtonsWrapper = styled.div`
@@ -56,6 +56,9 @@ export const StyledError = styled(ErrorInfo)`
   height: 35px;
   transform: translateX(0);
   margin-right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 `;
 
 export const StyledPerson = styled(Person)`

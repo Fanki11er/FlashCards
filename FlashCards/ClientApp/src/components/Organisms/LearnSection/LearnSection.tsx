@@ -55,7 +55,6 @@ const LearningSection = (props: Props) => {
       flashCard.status = 'LEARN';
       flashCard.correctAtRow = 0;
     }
-    console.log(flashCard);
     return flashCard;
   };
 
@@ -94,4 +93,3 @@ const LearningSection = (props: Props) => {
 };
 
 export default LearningSection;
-

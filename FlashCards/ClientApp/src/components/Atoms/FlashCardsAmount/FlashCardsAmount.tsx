@@ -4,12 +4,13 @@ interface InfoProps {
   color: string;
   amount?: number;
   label: string;
+  title?: string;
 }
 
 const FlashCardsAmount = (props: InfoProps) => {
   const { color, amount, label } = props;
   return (
-    <FlashCardsAmountWrapper color={color}>
+    <FlashCardsAmountWrapper color={color} title={props.title}>
       <AmountInfoSpan>{amount ? amount : 0}</AmountInfoSpan>
       <AmountInfoSpan>{label}</AmountInfoSpan>
     </FlashCardsAmountWrapper>

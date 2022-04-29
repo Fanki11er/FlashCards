@@ -13,9 +13,24 @@ const FlashCardsInfo = (props: Props) => {
   const { lightBlue, darkOrange, yellow } = theme.colors;
   return (
     <FlashCardsInfoWrapper>
-      <FlashCardsAmount color={lightBlue} label={'Nowe'} amount={flashCardsInfo?.newAmount ? flashCardsInfo.newAmount : 0} />
-      <FlashCardsAmount color={darkOrange} label={'Nauka'} amount={flashCardsInfo?.toLearnAmount ? flashCardsInfo.toLearnAmount : 0} />
-      <FlashCardsAmount color={yellow} label={'Wszystkie'} amount={flashCardsInfo?.allAmount ? flashCardsInfo.allAmount : 0} />
+      <FlashCardsAmount
+        color={lightBlue}
+        label={'Nowe'}
+        amount={flashCardsInfo?.newAmount ? flashCardsInfo.newAmount : 0}
+        title={'Ilość nowych fiszek'}
+      />
+      <FlashCardsAmount
+        color={darkOrange}
+        label={'Nauka'}
+        amount={flashCardsInfo?.toLearnAmount ? flashCardsInfo.toLearnAmount : 0}
+        title={'Fiszki których naukę trzeba powtórzyć'}
+      />
+      <FlashCardsAmount
+        color={yellow}
+        label={'Wszystkie'}
+        amount={flashCardsInfo?.allAmount ? flashCardsInfo.allAmount : 0}
+        title={'Ilość wszystkich fiszek'}
+      />
     </FlashCardsInfoWrapper>
   );
 };
