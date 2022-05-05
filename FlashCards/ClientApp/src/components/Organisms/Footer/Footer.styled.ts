@@ -8,6 +8,7 @@ export const FooterWrapper = styled.footer`
         background: linear-gradient(90deg, transparent, rgba(41, 128, 168, 0.2), rgba(40, 33, 141, 0.3));
         display: flex;
         justify-content: flex-end;
+        margin-top: 100px;
 `;
 
 export const InfoWrapper = styled.div`

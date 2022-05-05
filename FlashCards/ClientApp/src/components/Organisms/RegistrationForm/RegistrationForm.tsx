@@ -4,7 +4,6 @@ import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import FormInput from '../../Molecules/FormInput/FormInput';
 import { ErrorInput, InputWrapper, RegistrationPerson, StyledRegistrationForm } from './RegistrationForm.styles';
 import * as Yup from 'yup';
-import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 import axios from '../../../Api/axios';
 import endpoints from '../../../Api/endpoints';
 import { useState } from 'react';

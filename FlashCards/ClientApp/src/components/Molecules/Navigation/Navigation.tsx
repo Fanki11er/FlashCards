@@ -8,7 +8,7 @@ import useAuth from '../../../Hooks/useAuth';
 
 const Navigation = () => {
   const { login, registration, main, learn, maintenance, settings } = routes;
-
+  
   const { auth, setAuth } = useAuth();
 
   const { pathname } = useLocation();
@@ -26,8 +26,9 @@ const Navigation = () => {
                 Wyloguj
               </NavigationButton>
             )}
-            <NavigationButton to={login}>Zaloguj</NavigationButton>
-            <NavigationButton to={registration}>Rejestracja</NavigationButton>
+           {!auth?.accessToken &&<><NavigationButton to={login}>Zaloguj</NavigationButton> 
+           <NavigationButton to={registration}>Rejestracja</NavigationButton></>} 
+           
           </ButtonsWrapper>
         )}
         {pathname === registration && (
