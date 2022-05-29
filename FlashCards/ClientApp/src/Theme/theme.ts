@@ -20,12 +20,15 @@ export const theme: AppTheme = {
   },
   fontSizes: {
     navigationButton: '25px',
+    mediumNavigationButton: '20px',
     mediumHeader: '4.5rem',
+    smallHeader: '3.5rem',
     smallError: '2rem',
+    verySmallError: '1.5rem',
   },
 
   devices: {
-    medium: `max-width: 1200px`,
+    medium: `max-width: 1919px`,
   },
 };
 
@@ -51,8 +54,11 @@ export type AppTheme = {
   };
   fontSizes: {
     navigationButton: string;
+    mediumNavigationButton: string;
     mediumHeader: string;
     smallError: string;
+    verySmallError: string;
+    smallHeader: string;
   };
 
   devices: {
