@@ -1,5 +1,5 @@
 import { createGlobalStyle } from 'styled-components';
-import {theme} from './theme';
+import { theme } from './theme';
 
 const GlobalStyle = createGlobalStyle`
 
@@ -10,24 +10,13 @@ const GlobalStyle = createGlobalStyle`
 }
 html{
     font-size:62.5% ;
-    //width: 100% ;
-<<<<<<< HEAD
-   // min-height: 100vh;
-   // height: fit-content;
-=======
-    //min-height: 100vh;
->>>>>>> @{-1}
+ 
 }
 body {
     font-size:1.6rem ;
     margin:0 ;
     padding:0 ;
-    //width:100% ;
-    //min-height: 100vh ;
-<<<<<<< HEAD
-    //height: 120vh;
-=======
->>>>>>> @{-1}
+ 
     
     ::-webkit-scrollbar{
         width: 20px;

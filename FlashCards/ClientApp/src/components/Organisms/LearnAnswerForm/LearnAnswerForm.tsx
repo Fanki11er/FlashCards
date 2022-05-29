@@ -1,5 +1,4 @@
 import { Formik } from 'formik';
-import useAutoFocus from '../../../Hooks/useAutoFocus';
 import { DefaultButton } from '../../Atoms/Buttons/Buttons';
 import { AnswerInput, StyledLearnAnswerForm } from './LearnAnswerForm.styles';
 

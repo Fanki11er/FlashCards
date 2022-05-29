@@ -23,6 +23,10 @@ export const theme: AppTheme = {
     mediumHeader: '4.5rem',
     smallError: '2rem',
   },
+
+  devices: {
+    medium: `max-width: 1200px`,
+  },
 };
 
 export type AppTheme = {
@@ -49,6 +53,10 @@ export type AppTheme = {
     navigationButton: string;
     mediumHeader: string;
     smallError: string;
+  };
+
+  devices: {
+    medium: string;
   };
 };
 
