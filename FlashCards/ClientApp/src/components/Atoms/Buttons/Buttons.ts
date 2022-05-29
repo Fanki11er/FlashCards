@@ -42,6 +42,10 @@ export const MainMenuButton = styled(DefaultButton)`
   :visited {
     color: ${({ theme }) => theme.colors.buttonGreen};
   }
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 300px;
+    margin-top: 20px;
+  }
 `;
 
 export const CancelButton = styled(DefaultButton)`
