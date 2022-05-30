@@ -7,8 +7,8 @@
 <br/>
 <br/>
 
-
 ### This project was made for the specialist workshop:
+
 ### Programowanie aplikacji WWW w technologii .NET
 
 <br/>
@@ -23,7 +23,7 @@ To be familiar with .net technology on web development.
 
 ## Link
 
-[**Video presenting an example of using of application**](h).
+[**Video presenting an example of using of application**](https://youtu.be/-7PKfgJwNW4).
 
 ## Some of used technologies
 
@@ -33,4 +33,3 @@ To be familiar with .net technology on web development.
 - _TypeScript_
 - _Styled components_
 - _Axios_
-
