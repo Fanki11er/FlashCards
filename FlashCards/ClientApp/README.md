@@ -1,4 +1,4 @@
-<img src="https://github.com/Fanki11er/FlashCards/raw/master/FlashCards/ClientApp/src/Assets/Svgfavicon.svg" align="center" width="300px" >
+<img src="https://github.com/Fanki11er/FlashCards/raw/master/FlashCards/ClientApp/src/Assets/Svg/favicon.svg" align="center" width="300px" >
 
 <br/>
 <br/>
