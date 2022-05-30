@@ -38,6 +38,11 @@ export const StyledInput = styled(Field)`
     /* display: none; <- Crashes Chrome on hover */
     -webkit-appearance: none;
   }
+
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    height: 45px;
+    font-size: ${(props: ThemeProps) => props.theme.fontSizes.mediumNavigationButton};
+  }
 `;
 
 export const Label = styled.label`
@@ -51,12 +56,18 @@ export const Label = styled.label`
 export const LongInputWrapper = styled.div`
   width: 100%;
   height: 90px;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    height: 80px;
+  }
 `;
 
 export const ShortInputWrapper = styled.div`
   width: 210px;
   height: 90px;
   align-self: flex-start;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    height: 80px;
+  }
 `;
 
 export const ButtonsWrapper = styled.div`
