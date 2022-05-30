@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ThemeProps } from '../../../Theme/theme';
 
 export const DefaultButton = styled.button`
   width: 250px;
@@ -23,6 +24,12 @@ export const DefaultButton = styled.button`
     background-color: ${({ theme }) => theme.colors.darkGrey};
     pointer-events: none;
   }
+
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 200px;
+    height: 50px;
+    font-size: ${({ theme }) => theme.fontSizes.mediumNavigationButton};
+  }
 `;
 
 export const MainMenuButton = styled(DefaultButton)`
@@ -34,6 +41,10 @@ export const MainMenuButton = styled(DefaultButton)`
   text-decoration: none;
   :visited {
     color: ${({ theme }) => theme.colors.buttonGreen};
+  }
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 300px;
+    margin-top: 20px;
   }
 `;
 

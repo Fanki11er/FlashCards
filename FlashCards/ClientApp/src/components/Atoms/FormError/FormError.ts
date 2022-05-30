@@ -30,5 +30,8 @@ export const FormError = styled.div`
       opacity: 1;
     }
   }
-`;
 
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    font-size: ${(props: ThemeProps) => props.theme.fontSizes.verySmallError};
+  }
+`;

@@ -12,6 +12,4 @@ export const StyledForm = styled(Form)`
   border-radius: 15px;
   align-items: center;
   justify-content: center;
- 
 `;
-

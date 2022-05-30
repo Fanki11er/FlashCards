@@ -1,4 +1,5 @@
 import styled from 'styled-components';
+import { ThemeProps } from '../../../Theme/theme';
 import { DefaultField } from '../../Atoms/DefaultField/DefaultField';
 import { StyledForm } from '../../Atoms/StyledForm/StyledForm';
 
@@ -12,6 +13,10 @@ export const StyledLearnAnswerForm = styled(StyledForm)`
   background: transparent;
   padding: 0;
   user-select: none;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    grid-template-rows: 70px 70px;
+    height: 160px;
+  }
 `;
 
 export const AnswerInput = styled(DefaultField)`
@@ -19,4 +24,3 @@ export const AnswerInput = styled(DefaultField)`
   width: 100%;
   grid-column: 1 / span 1;
 `;
-

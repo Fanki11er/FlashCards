@@ -19,6 +19,10 @@ export const LearnSectionWrapper = styled.div`
   border-radius: 15px;
   display: grid;
   grid-template-rows: 1fr 60px;
+
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    height: 400px;
+  }
 `;
 
 export const FormWrapper = styled.div`
@@ -26,7 +30,10 @@ export const FormWrapper = styled.div`
   height: 100%;
   display: grid;
   grid-template-rows: 0.3fr 0.7fr;
-  grid-row-gap: 15px;
+  grid-row-gap: 8px;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    height: 80%;
+  }
 `;
 
 export const BottomSection = styled.div`
@@ -58,7 +65,7 @@ export const StyledHut = styled(Hut)`
   height: 120px;
   position: absolute;
   top: -80px;
-  right: -35px;
+  left: -35px;
 `;
 
 export const ResultWrapper = styled.div`
@@ -67,6 +74,10 @@ export const ResultWrapper = styled.div`
   width: 100%;
   height: 100%;
   align-items: center;
+
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    grid-template-rows: 70px 70px 1fr;
+  }
 `;
 
 export const StyledCorrect = styled(Correct)`
@@ -74,12 +85,20 @@ export const StyledCorrect = styled(Correct)`
   height: 120px;
   justify-self: center;
   align-self: flex-end;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 export const StyledWrong = styled(Wrong)`
   width: 120px;
   height: 120px;
   justify-self: center;
   align-self: flex-end;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 80px;
+    height: 80px;
+  }
 `;
 
 export const StyledTextField = styled(TextField)`
@@ -88,4 +107,3 @@ export const StyledTextField = styled(TextField)`
   border: 3px solid ${(props: ThemeProps & FieldProps) => (props.correct ? props.theme.colors.buttonGreen : props.theme.colors.errorRed)};
   align-items: center;
 `;
-

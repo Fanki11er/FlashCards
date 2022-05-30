@@ -1,5 +1,6 @@
 import styled from 'styled-components';
 import { FormError } from '../../components/Atoms/FormError/FormError';
+import { ThemeProps } from '../../Theme/theme';
 
 export const MainPageWrapper = styled.div`
   display: grid;
@@ -9,6 +10,9 @@ export const MainPageWrapper = styled.div`
   height: 100%;
   min-height: 100vh;
   background-color: transparent;
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    grid-template-columns: 1fr 420px 1fr;
+  }
 `;
 
 export const StyledError = styled(FormError)`

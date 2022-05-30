@@ -23,4 +23,9 @@ export const DefaultField = styled(Field)`
   :focus {
     border: 3px solid ${(props: ThemeProps) => props.theme.colors.orange};
   }
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 80%;
+    height: 45px;
+    font-size: ${(props: ThemeProps) => props.theme.fontSizes.mediumNavigationButton};
+  }
 `;

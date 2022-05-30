@@ -4,7 +4,6 @@ import { FormHeader } from '../../Atoms/FormHeader/FormHeader';
 import FormInput from '../../Molecules/FormInput/FormInput';
 import { ErrorInput, InputWrapper, RegistrationPerson, StyledRegistrationForm } from './RegistrationForm.styles';
 import * as Yup from 'yup';
-import ErrorInfo from '../../Atoms/ErrorInfo/ErrorInfo';
 import axios from '../../../Api/axios';
 import endpoints from '../../../Api/endpoints';
 import { useState } from 'react';
@@ -12,6 +11,7 @@ import { FormError } from '../../Atoms/FormError/FormError';
 import { ConnectionInfo } from '../LoginForm/LoginForm.styles';
 import { useNavigate } from 'react-router';
 import routes from '../../../Routes/routes';
+import useAutoFocus from '../../../Hooks/useAutoFocus';
 
 interface MyFormValues {
   name: string;
@@ -46,6 +46,7 @@ const RegistrationForm = () => {
   const [isConnecting, setIsConnecting] = useState(false);
   const [isError, setError] = useState('');
   const navigate = useNavigate();
+  const nameInput = useAutoFocus();
 
   const initialValues: MyFormValues = { name: '', password: '', email: '', confirmPassword: '' };
   const { registerEndpoint } = endpoints;
@@ -77,7 +78,6 @@ const RegistrationForm = () => {
       validationSchema={RegistrationSchema}
       onSubmit={(values, actions) => {
         const userCredentials = new UserRegistrationCredentials(values);
-        console.log('Subiting');
         handleSubmit(userCredentials);
 
         actions.setSubmitting(false);
@@ -86,7 +86,7 @@ const RegistrationForm = () => {
       <StyledRegistrationForm>
         <FormHeader>Rejestracja</FormHeader>
         <InputWrapper>
-          <FormInput name="name" placeholder="Name" label="Login*" />
+          <FormInput name="name" placeholder="Name" label="Imię*" inputRef={nameInput} />
           <ErrorMessage name="name" render={(msg) => <ErrorInput>{msg}</ErrorInput>} />
         </InputWrapper>
         <InputWrapper>

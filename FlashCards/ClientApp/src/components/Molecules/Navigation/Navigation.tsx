@@ -21,13 +21,19 @@ const Navigation = () => {
         {auth?.name && auth?.accessToken ? <UserPicture userName={auth.name} /> : null}
         {pathname === '/' && (
           <ButtonsWrapper>
-            {auth?.accessToken && (
-              <NavigationButton to="/" onClick={() => setAuth(undefined)}>
-                Wyloguj
-              </NavigationButton>
+            {auth?.accessToken ? (
+              <>
+                <NavigationButton to={main}>Menu</NavigationButton>
+                <NavigationButton to="/" onClick={() => setAuth(undefined)}>
+                  Wyloguj
+                </NavigationButton>
+              </>
+            ) : (
+              <>
+                <NavigationButton to={login}>Zaloguj</NavigationButton>
+                <NavigationButton to={registration}>Rejestracja</NavigationButton>
+              </>
             )}
-            <NavigationButton to={login}>Zaloguj</NavigationButton>
-            <NavigationButton to={registration}>Rejestracja</NavigationButton>
           </ButtonsWrapper>
         )}
         {pathname === registration && (

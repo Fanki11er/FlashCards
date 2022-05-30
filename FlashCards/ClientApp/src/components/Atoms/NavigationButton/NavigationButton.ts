@@ -1,5 +1,6 @@
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
+import { ThemeProps } from '../../../Theme/theme';
 
 export const NavigationButton = styled(Link)`
   display: flex;
@@ -20,5 +21,11 @@ export const NavigationButton = styled(Link)`
   user-select: none;
   :visited {
     color: ${({ theme }) => theme.colors.darkPurple};
+  }
+
+  @media screen and (${(props: ThemeProps) => props.theme.devices.medium}) {
+    width: 150px;
+    height: 50px;
+    font-size: ${({ theme }) => theme.fontSizes.mediumNavigationButton};
   }
 `;
