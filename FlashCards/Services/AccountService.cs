@@ -30,6 +30,7 @@ namespace FlashCards.Services
         public AccountService(FlashCardsDbContext context, IPasswordHasher<User> passwordHasher, AuthenticationSettings authenticationSettings)
         {
             _context = context;
+            _context.Database.EnsureCreated();
             _passwordHasher = passwordHasher;
             _authenticationSettings = authenticationSettings;
         }
