@@ -86,7 +86,7 @@ const RegistrationForm = () => {
       <StyledRegistrationForm>
         <FormHeader>Rejestracja</FormHeader>
         <InputWrapper>
-          <FormInput name="name" placeholder="Name" label="Imię*" inputRef={nameInput} />
+          <FormInput name="name" placeholder="Imię" label="Imię*" inputRef={nameInput} />
           <ErrorMessage name="name" render={(msg) => <ErrorInput>{msg}</ErrorInput>} />
         </InputWrapper>
         <InputWrapper>
